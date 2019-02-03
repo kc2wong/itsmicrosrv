@@ -1,0 +1,6 @@
+package com.exiasoft.itsaccount.serializer
+
+import com.exiasoft.itsaccount.model.enumeration.TradingAccountStatus
+import com.exiasoft.itscommon.serializer.AbstractEnum2StringDeserializer
+
+class TradingAccountStatusDeserializer : AbstractEnum2StringDeserializer<TradingAccountStatus>(TradingAccountStatus::class.java)
