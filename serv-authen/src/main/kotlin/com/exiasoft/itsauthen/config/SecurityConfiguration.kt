@@ -1,5 +1,7 @@
 package com.exiasoft.itsauthen.config
 
+import com.exiasoft.itsauthen.CONTEXT_PATH
+import com.exiasoft.itsauthen.CONTEXT_PATH_INTERNAL
 import com.exiasoft.itsauthen.service.impl.JwtAuthenticationConverter
 import com.exiasoft.itscommon.authen.TokenProvider
 import org.springframework.context.annotation.Bean
@@ -25,9 +27,9 @@ class SecurityConfiguration(val tokenProvider: TokenProvider) {
         authFilter.setServerAuthenticationConverter(JwtAuthenticationConverter(tokenProvider))
 
         return http.authorizeExchange()
-                .pathMatchers("/authen-serv/v1/papi/challenge").permitAll()
-                .pathMatchers("/authen-serv/v1/papi/response").permitAll()
-                .pathMatchers("/authen-serv/int/v1/papi/authen-token").permitAll()
+                .pathMatchers("$CONTEXT_PATH/papi/challenge").permitAll()
+                .pathMatchers("$CONTEXT_PATH/papi/response").permitAll()
+                .pathMatchers("$CONTEXT_PATH_INTERNAL/v1/papi/authen-token").permitAll()
                 .pathMatchers("/**").authenticated()
                 .and()
                 .addFilterAt(authFilter, SecurityWebFiltersOrder.AUTHENTICATION)
