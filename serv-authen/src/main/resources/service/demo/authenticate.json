@@ -1,0 +1,14 @@
+{
+  "Transfer-Encoding": "chunked",
+  "Server": "Apache-Coyote\/1.1",
+  "warningCode": "",
+  "Pragma": "no-cache",
+  "Date": "Sat, 17 Nov 2018 15:47:08 GMT",
+  "result": "success",
+  "gskSek": "19efe5e57cfa9a092e095059d5e8d1850aaf8993d17bd9083776eb21bd756879",
+  "Cache-Control": "no-cache",
+  "gskUserOid": "e81714fc52c1ae5abd30606f2fff7a1a",
+  "Expires": "Sat, 17 Nov 2018 15:47:08 GMT",
+  "gskSessId": "aecff992b291f73c3302054bbff2e05c3018b16c6fadc3cd284c758defeaa019b2fb4930cd8ec2b3b0d1933ed072459b38a6566cd0d45d16ecfc622e6b5e291e0aaf8993d17bd9083776eb21bd756879",
+  "Content-Type": "text\/plain;charset=ISO8859_1"
+}

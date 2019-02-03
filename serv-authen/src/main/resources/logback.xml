@@ -1,0 +1,63 @@
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <springProperty scope="context" name="springAppName" source="spring.application.name"/>
+
+    <!-- You can override this to have a custom pattern -->
+    <property name="SLEUTH_PATTERN"
+              value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+
+    <appender name="GELF" class="de.siegmar.logbackgelf.GelfUdpAppender">
+        <graylogHost>192.168.11.37</graylogHost>
+        <graylogPort>12201</graylogPort>
+        <layout class="de.siegmar.logbackgelf.GelfLayout">
+            <shortPatternLayout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${SLEUTH_PATTERN}</pattern>
+            </shortPatternLayout>
+            <fullPatternLayout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${SLEUTH_PATTERN}</pattern>
+            </fullPatternLayout>
+        </layout>
+    </appender>
+
+    <!--<appender name="GELF" class="biz.paluch.logging.gelf.logback.GelfLogbackAppender">-->
+        <!--<host>udp:192.168.11.37</host>-->
+        <!--<port>12201</port>-->
+        <!--<version>1.1</version>-->
+        <!--<facility>java-test</facility>-->
+        <!--<extractStackTrace>true</extractStackTrace>-->
+        <!--<filterStackTrace>true</filterStackTrace>-->
+        <!--<mdcProfiling>true</mdcProfiling>-->
+        <!--<timestampPattern>yyyy-MM-dd HH:mm:ss,SSS</timestampPattern>-->
+        <!--<maximumMessageSize>8192</maximumMessageSize>-->
+
+        <!--&lt;!&ndash; This are static fields &ndash;&gt;-->
+        <!--<additionalFields>fieldName1=fieldValue1,fieldName2=fieldValue2</additionalFields>-->
+        <!--&lt;!&ndash; Optional: Specify field types &ndash;&gt;-->
+        <!--<additionalFieldTypes>fieldName1=String,fieldName2=Double,fieldName3=Long</additionalFieldTypes>-->
+
+        <!--&lt;!&ndash; This are fields using MDC &ndash;&gt;-->
+        <!--<mdcFields>mdcField1,mdcField2</mdcFields>-->
+        <!--<dynamicMdcFields>mdc.*,(mdc|MDC)fields</dynamicMdcFields>-->
+        <!--<includeFullMdc>true</includeFullMdc>-->
+        <!--<filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+            <!--<level>INFO</level>-->
+        <!--</filter>-->
+    <!--</appender>-->
+
+    <!-- Appender to log to console -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <!-- Minimum logging level to be presented in the console logs-->
+            <level>DEBUG</level>
+        </filter>
+        <encoder>
+            <pattern>${SLEUTH_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <root level="info">
+        <!--<appender-ref ref="GELF" />-->
+        <appender-ref ref="CONSOLE" />
+    </root>
+</configuration>

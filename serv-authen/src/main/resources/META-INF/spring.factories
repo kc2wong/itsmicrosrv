@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.exiasoft.itsauthen.config.ItsAuthenServiceClientAutoConfig,\
+com.exiasoft.itsauthen.config.FunctionListConfig

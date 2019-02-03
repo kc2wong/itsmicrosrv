@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MSG>
+    <BODY>
+        <DO-DATA>
+            <USER USER_OID="6000100303" USER_ID="AD2923702" USER_ROLE_OID="430006" />
+        </DO-DATA>
+    </BODY>
+    <HEADER CL_ERR_CODE="" CL_ERR_PARA="" CL_RESULT="CL_SUCCESS"/>
+</MSG>
