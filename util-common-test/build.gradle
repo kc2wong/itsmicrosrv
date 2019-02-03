@@ -1,0 +1,78 @@
+buildscript {
+    ext {
+        kotlinVersion = '1.3.11'
+        springAutoRestDocsVersion = '2.0.3'
+        dokkaVersion = '0.9.17'
+    }
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven {
+            url artifactoryReadUrl
+        }
+    }
+    dependencies {
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
+        classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+
+        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.9'
+        classpath "org.ajoberstar:gradle-git-publish:2.0.0"
+        classpath("org.jetbrains.dokka:dokka-gradle-plugin:${dokkaVersion}")
+    }
+}
+
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.3.11'
+}
+
+apply plugin: 'maven-publish'
+
+group 'com.exiasoft'
+version '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        url artifactoryReadUrl
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation "org.springframework.security:spring-security-core:5.1.1.RELEASE"
+    implementation('org.springframework.restdocs:spring-restdocs-webtestclient:2.0.2.RELEASE')
+    implementation("capital.scalable:spring-auto-restdocs-core:${springAutoRestDocsVersion}")
+    implementation('com.exiasoft:itscommon:0.0.1-SNAPSHOT')
+}
+
+compileJava {
+    targetCompatibility = '1.8'
+}
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+publishing {
+    publications {
+        maven( MavenPublication ) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url myMavenRepoWriteUrl
+            credentials {
+                username myMavenRepoWriteUsername
+                password myMavenRepoWritePassword
+            }
+        }
+    }
+}
