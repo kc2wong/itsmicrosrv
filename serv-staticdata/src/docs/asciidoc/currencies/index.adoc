@@ -1,0 +1,74 @@
+//[[home]]
+//= link:../index.html[Home]
+//
+//include::../pagination.adoc[]
+//
+//[[resources-curriencies]]
+=== Currencies
+
+[[resources-curriencies-get]]
+==== Get a currency
+
+`GET /sapi/currencies/{currencyCode}`
+
+Returns a currency with matched currency code
+
+===== Authorization
+
+include::{snippets}/currency-controller-test/find-one/auto-authorization.adoc[]
+
+===== Path parameters
+
+include::{snippets}/currency-controller-test/find-one/auto-path-parameters.adoc[]
+
+//=== Request fields
+//
+//include::{snippets}/currency-controller-test/find-one/auto-request-fields.adoc[]
+
+===== Response fields
+
+include::{snippets}/currency-controller-test/find-one/auto-response-fields.adoc[]
+
+===== Example request/response
+
+include::{snippets}/currency-controller-test/find-one/curl-request.adoc[]
+include::{snippets}/currency-controller-test/find-one/http-response.adoc[]
+
+
+[[resources-curriencies-search]]
+==== Search currencies
+
+`GET /sapi/currencies`
+
+Search currencies by name (wildcard search).  Returns all currencies if no request parameter is specified
+
+===== Authorization
+
+include::{snippets}/currency-controller-test/search/auto-authorization.adoc[]
+
+===== Request parameters
+
+include::{snippets}/currency-controller-test/search/auto-request-parameters.adoc[]
+
+===== Response fields
+
+include::{snippets}/currency-controller-test/search/auto-response-fields.adoc[]
+
+===== Example request/response
+
+include::{snippets}/currency-controller-test/search/curl-request.adoc[]
+
+The array shortening feature intercepted here and to 3 items.
+
+include::{snippets}/currency-controller-test/search/http-response.adoc[]
+
+// Use of all in one section snippets
+//include::{snippets}/item-resource-test/add-item/auto-section.adoc[]
+//include::{snippets}/item-resource-test/update-item/auto-section.adoc[]
+//include::{snippets}/item-resource-test/delete-item/auto-section.adoc[]
+//include::{snippets}/item-resource-test/get-child-item/auto-section.adoc[]
+//include::{snippets}/item-resource-test/search/auto-section.adoc[]
+//include::{snippets}/item-resource-test/process-all-items/auto-section.adoc[]
+//include::{snippets}/item-resource-test/process-single-item/auto-section.adoc[]
+//include::{snippets}/item-resource-test/validate-metadata/auto-section.adoc[]
+//include::{snippets}/item-resource-test/clone-item/auto-section.adoc[]

@@ -1,0 +1,23 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8082/eureka/
+    registryFetchIntervalSeconds: 5
+    region: default
+spring:
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: itsconfig
+      # Retrieve itsstaticdata.yml in config server
+      name: itsstaticdata
+  sleuth:
+    sampler:
+      probability: 1
+  zipkin:
+    baseUrl: http://itszipkin
+    enabled: true
+    locator:
+      discovery:
+        enabled: true

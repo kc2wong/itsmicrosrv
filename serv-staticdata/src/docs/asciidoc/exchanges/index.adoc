@@ -1,0 +1,64 @@
+=== Exchanges
+
+[[resources-exchanges-get]]
+==== Get a exchange
+
+`GET /sapi/exchanges/{exchangeCode}`
+
+Returns an exchange with matched exchange code
+
+===== Authorization
+
+include::{snippets}/exchange-controller-test/find-one/auto-authorization.adoc[]
+
+===== Path parameters
+
+include::{snippets}/exchange-controller-test/find-one/auto-path-parameters.adoc[]
+
+===== Response fields
+
+include::{snippets}/exchange-controller-test/find-one/auto-response-fields.adoc[]
+
+===== Example request/response
+
+include::{snippets}/exchange-controller-test/find-one/curl-request.adoc[]
+include::{snippets}/exchange-controller-test/find-one/http-response.adoc[]
+
+
+[[resources-exchanges-search]]
+==== Search exchanges
+
+`GET /sapi/exchanges`
+
+Search exchanges by name (wildcard search).  Returns all exchanges if no request parameter is specified
+
+===== Authorization
+
+include::{snippets}/exchange-controller-test/search/auto-authorization.adoc[]
+
+===== Request parameters
+
+include::{snippets}/exchange-controller-test/search/auto-request-parameters.adoc[]
+
+===== Response fields
+
+include::{snippets}/exchange-controller-test/search/auto-response-fields.adoc[]
+
+===== Example request/response
+
+include::{snippets}/exchange-controller-test/search/curl-request.adoc[]
+
+The array shortening feature intercepted here and to 3 items.
+
+include::{snippets}/exchange-controller-test/search/http-response.adoc[]
+
+// Use of all in one section snippets
+//include::{snippets}/item-resource-test/add-item/auto-section.adoc[]
+//include::{snippets}/item-resource-test/update-item/auto-section.adoc[]
+//include::{snippets}/item-resource-test/delete-item/auto-section.adoc[]
+//include::{snippets}/item-resource-test/get-child-item/auto-section.adoc[]
+//include::{snippets}/item-resource-test/search/auto-section.adoc[]
+//include::{snippets}/item-resource-test/process-all-items/auto-section.adoc[]
+//include::{snippets}/item-resource-test/process-single-item/auto-section.adoc[]
+//include::{snippets}/item-resource-test/validate-metadata/auto-section.adoc[]
+//include::{snippets}/item-resource-test/clone-item/auto-section.adoc[]

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MSG>
+    <BODY>
+        <DO-DATA>
+            <OPERATION_UNIT ACCOUNT_MASK="999-9-99999-9" ADDRESS1_DEF_LANG="Address Line 1 for OU WLB"
+                            ADDRESS2_DEF_LANG="Address Line 2 for OU WLB" ADDRESS3_DEF_LANG="Address Line 3 for OU WLB"
+                            ADDRESS4_DEF_LANG="Address Line 4 for OU WLB"
+                            CACC_CODE_AUTO_COMPLETE_CLASS="com.excelhk.its.wlb.account.WLBCaccCodeValidator"
+                            CHECK_DIGIT_GENERATION_CLASS="com.excelhk.its.dataaccess.clientdata.DefaultCaccCodeCheckDigitValidator"
+                            CONSOLIDATED_CACC_DESCPT_1="Consolidated Account" CONSOLIDATED_CACC_OID_1="2011047"
+                            DEMO_OU_IND="N" GTC_ORDER_RN_DN="1" LAST_MOD_TIMESTAMP="2015/10/30 17:03:28"
+                            LAST_MOD_USER="DEMO01" MFXFER_PARA_EFF_DATE="2999/12/31" MFXFER_SVC_ENDTIME_1="20:00"
+                            MFXFER_SVC_STARTTIME_1="09:00" NAME1_DEF_LANG="Wing Lung Bank Ltd." NAME2_DEF_LANG="test"
+                            OPER_UNIT_CODE="WLB" OPER_UNIT_OID="240001" SHORT_NAME_DEF_LANG="WLB" STATUS="A"
+                            SYNCSTR="2015/10/30 17:03:28" VERSION="29">
+                <BRANCH BRANCH_CODE="TEST" BRANCH_OID="3756876" DESCPT="test" LAST_MOD_TIMESTAMP="2015/02/06 12:10:31"
+                        LAST_MOD_USER="PPAK" OPER_UNIT_OID="240001" SEQUENCE="6" STATUS="A"
+                        SYNCSTR="2015/02/06 12:10:30" VERSION="1"/>
+                <BRANCH BRANCH_CODE="101-02" BRANCH_OID="2000069" DESCPT="Head Office Deposit Office"
+                        LAST_MOD_TIMESTAMP="2014/04/16 17:03:06" LAST_MOD_USER="SYSADMALL" OPER_UNIT_OID="240001"
+                        SEQUENCE="4" STATUS="A" SYNCSTR="2014/04/16 17:03:06" VERSION="1"/>
+                <BRANCH BRANCH_CODE="B001" BRANCH_OID="2000004" DESCPT="Branch 001"
+                        LAST_MOD_TIMESTAMP="2014/04/08 09:51:32" LAST_MOD_USER="DEMO01" OPER_UNIT_OID="240001"
+                        SEQUENCE="1" STATUS="A" SYNCSTR="2014/04/08 09:51:32" VERSION="1"/>
+                <BRANCH BRANCH_CODE="B002" BRANCH_OID="2000005" DESCPT="Branch 002"
+                        LAST_MOD_TIMESTAMP="2014/04/08 09:51:32" LAST_MOD_USER="DEMO01" OPER_UNIT_OID="240001"
+                        SEQUENCE="2" STATUS="A" SYNCSTR="2014/04/08 09:51:32" VERSION="1"/>
+                <BRANCH BRANCH_CODE="B003" BRANCH_OID="2000006" DESCPT="Branch 003"
+                        LAST_MOD_TIMESTAMP="2014/04/08 09:51:32" LAST_MOD_USER="DEMO01" OPER_UNIT_OID="240001"
+                        SEQUENCE="3" STATUS="A" SYNCSTR="2014/04/08 09:51:32" VERSION="1"/>
+                <BRANCH BRANCH_CODE="688" BRANCH_OID="2000071" DESCPT="CMB" LAST_MOD_TIMESTAMP="2014/04/16 17:03:06"
+                        LAST_MOD_USER="SYSADMALL" OPER_UNIT_OID="240001" SEQUENCE="5" STATUS="A"
+                        SYNCSTR="2014/04/16 17:03:06" VERSION="1"/>
+                <BRANCH BRANCH_CODE="688-08" BRANCH_OID="2000072" DESCPT="ONLINE APPLICATION"
+                        LAST_MOD_TIMESTAMP="2014/08/25 12:22:29" LAST_MOD_USER="SYSADMALL" OPER_UNIT_OID="240001"
+                        SEQUENCE="1" STATUS="A" SYNCSTR="2000/01/01 00:00:00" VERSION="1"/>
+                <OPER_UNIT_EXCH EXCH_OID="270003" LAST_MOD_TIMESTAMP="2015/06/26 16:36:25" LAST_MOD_USER="SYS_BAT01"
+                                LAST_UNEXPECTED_HOLIDAY="2015/06/27 00:00:00"
+                                MARKET_READY_DATETIME="2017/03/06 08:00:00" OPER_UNIT_EXCH_OID="491005"
+                                OPER_UNIT_OID="240001" STATUS="A" SYNCSTR="2015/06/26 16:36:25" TRADE_DATE="2017/03/07"
+                                VERSION="41"/>
+                <OPER_UNIT_EXCH EXCH_OID="270001" LAST_MOD_TIMESTAMP="2015/11/04 14:52:56" LAST_MOD_USER="SYS_BAT01"
+                                LAST_UNEXPECTED_HOLIDAY="2099/02/02 00:00:00"
+                                MARKET_READY_DATETIME="2017/03/06 08:00:00" OPER_UNIT_EXCH_OID="491001"
+                                OPER_UNIT_OID="240001" PARTICIPANT_ID="B01156" STATUS="A" SYNCSTR="2015/11/04 14:52:56"
+                                TRADE_DATE="2017/03/07" VERSION="518">
+                    <OU_EXCH_BROKER BROKER_OID="120002" DEFAULT_IND="Y" LAST_MOD_TIMESTAMP="2014/04/08 08:51:29"
+                                    LAST_MOD_USER="SYSADMALL" OPER_UNIT_EXCH_OID="491001" OU_EXCH_BROKER_OID="660001"
+                                    STATUS="A" SYNCSTR="2000/01/01 00:00:00" VERSION="1"/>
+                </OPER_UNIT_EXCH>
+                <OPER_UNIT_EXCH EXCH_OID="270002" LAST_MOD_TIMESTAMP="2015/11/09 11:21:14" LAST_MOD_USER="SYS_BAT01"
+                                LAST_UNEXPECTED_HOLIDAY="2015/05/15 00:00:00"
+                                MARKET_READY_DATETIME="2017/03/06 08:00:00" OPER_UNIT_EXCH_OID="491003"
+                                OPER_UNIT_OID="240001" STATUS="A" SYNCSTR="2015/11/09 11:21:14" TRADE_DATE="2017/03/07"
+                                VERSION="204">
+                    <OU_EXCH_BROKER BROKER_OID="120002" DEFAULT_IND="Y" LAST_MOD_TIMESTAMP="2015/01/16 15:52:42"
+                                    LAST_MOD_USER="SYSADMALL" OPER_UNIT_EXCH_OID="491003" OU_EXCH_BROKER_OID="660003"
+                                    STATUS="A" SYNCSTR="2015/01/16 15:52:42" VERSION="1"/>
+                </OPER_UNIT_EXCH>
+                <EXCH_BRD_INVESTOR CACC_TYPE_OID="140003" EXCH_BRD_INVESTOR_OID="2000001" EXCH_BRD_OID="2028025"
+                                   INVESTOR_ID="123456" LAST_MOD_TIMESTAMP="2016/01/29 05:15:40"
+                                   LAST_MOD_USER="SYSADMALL" OPER_UNIT_OID="240001" PLEDGE_IND="Y" STATUS="A"
+                                   SYNCSTR="2016/01/01 00:00:00" VERSION="1"/>
+                <OU_LINE_INSTMT_GRP_CTGY INSTMT_GRP_CTGY_OID="360007" LAST_MOD_TIMESTAMP="2014/04/08 08:51:29"
+                                         LAST_MOD_USER="SYSADMALL" LINE_TYPE="MA_LN" OPER_UNIT_OID="240001"
+                                         OU_LINE_INSTMT_GRP_CTGY_OID="495003" STATUS="A" SYNCSTR="2000/01/01 00:00:00"
+                                         VERSION="1"/>
+                <OU_LINE_INSTMT_GRP_CTGY INSTMT_GRP_CTGY_OID="360001" LAST_MOD_TIMESTAMP="2014/04/08 08:51:29"
+                                         LAST_MOD_USER="SYSADMALL" LINE_TYPE="CR_LN" OPER_UNIT_OID="240001"
+                                         OU_LINE_INSTMT_GRP_CTGY_OID="495004" STATUS="A" SYNCSTR="2000/01/01 00:00:00"
+                                         VERSION="1"/>
+                <OPER_UNIT_CREDIT_PARA_2 APPLY_BANK_IND="Y" APPLY_CASH_IND="N" APPLY_COLLATERAL_LINE_IND="N"
+                                         APPLY_CREDIT_LINE_IND="N" APPLY_DISCNT_SELL_PROCEED_IND="N"
+                                         APPLY_MARGIN_CHECK_IND="Y" BUY_TXN_AMT="1000000" BUY_TXN_CCY_OID="150001"
+                                         CASH_XFER_CCY_OID="150001" CASH_XFER_LMT="2000000"
+                                         CHARGE_ADJUSTMENT_PERCENT="0" COMM_ADJUSTMENT_PERCENT="0"
+                                         CREDIT_LINE_4_ALL_STOCK_IND="Y" CREDIT_LMT_AMT="0" CREDIT_LMT_CCY_OID="150001"
+                                         CREDIT_RATIO="100" CREDIT_RISK_CCY_OID="150001"
+                                         DAILY_CASH_XFER_CCY_OID="150001" DAILY_CASH_XFER_LMT="5000000"
+                                         DAILY_TURNOVER_LMT="50000000" DAILY_TURNOVER_LMT_CCY_OID="150001"
+                                         EXCL_SUSPEND_INSMT_IN_DAY="-1" FLOAT_TO_NET_CON_RATIO="100" INSUFF_FUND_LMT="0"
+                                         LAST_MOD_TIMESTAMP="2015/10/30 17:03:28" LAST_MOD_USER="DEMO01"
+                                         MAX_LOAN_AMT="5000000" MAX_LOAN_CCY_OID="150001" OD_FACILITY_IND="N"
+                                         ONLINE_HOLD_FUND_IND="Y" OPER_UNIT_CREDIT_PARA_OID="420001"
+                                         OPER_UNIT_OID="240001" PLEDGE_IND="N" PROHIBIT_BUY_IND="N" SELL_OUT_RATIO="120"
+                                         SELL_TXN_AMT="1000000" SELL_TXN_CCY_OID="150001" STATUS="A"
+                                         STL_LINE_CCY_OID="150001" STOCK_CHECK_IND="Y" SYNCSTR="2015/10/30 17:03:28"
+                                         TOP_UP_RATIO="100" VERSION="29">
+                    <OU_CONC_LMT_TIER CLIENT_CLASS_OID="190004" CONC_LMT_HAIRCUT_PERCENTAGE="60"
+                                      INSTMT_GRP_CATEGORY_OID="360005" LAST_MOD_TIMESTAMP="2014/11/25 10:10:29"
+                                      LAST_MOD_USER="TM001" OPER_UNIT_CONC_LMT_TIER_OID="2496829"
+                                      OPER_UNIT_CREDIT_PARA_OID="420001" STATUS="A" SYNCSTR="2014/11/25 10:10:29"
+                                      VERSION="1"/>
+                    <OU_CONC_LMT_TIER CLIENT_CLASS_OID="190004" CONC_LMT_HAIRCUT_PERCENTAGE="50"
+                                      INSTMT_GRP_CATEGORY_OID="360008" LAST_MOD_TIMESTAMP="2014/11/25 10:10:29"
+                                      LAST_MOD_USER="TM001" OPER_UNIT_CONC_LMT_TIER_OID="2496830"
+                                      OPER_UNIT_CREDIT_PARA_OID="420001" STATUS="A" SYNCSTR="2014/11/25 10:10:29"
+                                      VERSION="1"/>
+                    <OU_CONC_LMT_TIER CLIENT_CLASS_OID="190004" CONC_LMT_HAIRCUT_PERCENTAGE="40"
+                                      INSTMT_GRP_CATEGORY_OID="360009" LAST_MOD_TIMESTAMP="2014/11/25 10:10:29"
+                                      LAST_MOD_USER="TM001" OPER_UNIT_CONC_LMT_TIER_OID="2496831"
+                                      OPER_UNIT_CREDIT_PARA_OID="420001" STATUS="A" SYNCSTR="2014/11/25 10:10:29"
+                                      VERSION="1"/>
+                    <OU_CONC_LMT_TIER CLIENT_CLASS_OID="190004" CONC_LMT_HAIRCUT_PERCENTAGE="30"
+                                      INSTMT_GRP_CATEGORY_OID="360010" LAST_MOD_TIMESTAMP="2014/11/25 10:10:29"
+                                      LAST_MOD_USER="TM001" OPER_UNIT_CONC_LMT_TIER_OID="2496832"
+                                      OPER_UNIT_CREDIT_PARA_OID="420001" STATUS="A" SYNCSTR="2014/11/25 10:10:29"
+                                      VERSION="1"/>
+                    <OU_CONC_LMT_TIER CLIENT_CLASS_OID="190004" CONC_LMT_HAIRCUT_PERCENTAGE="20"
+                                      INSTMT_GRP_CATEGORY_OID="360011" LAST_MOD_TIMESTAMP="2014/11/25 10:10:29"
+                                      LAST_MOD_USER="TM001" OPER_UNIT_CONC_LMT_TIER_OID="2496833"
+                                      OPER_UNIT_CREDIT_PARA_OID="420001" STATUS="A" SYNCSTR="2014/11/25 10:10:29"
+                                      VERSION="1"/>
+                    <OU_CONC_LMT_TIER CLIENT_CLASS_OID="190004" CONC_LMT_HAIRCUT_PERCENTAGE="80"
+                                      INSTMT_GRP_CATEGORY_OID="360002" LAST_MOD_TIMESTAMP="2014/11/25 10:10:29"
+                                      LAST_MOD_USER="TM001" OPER_UNIT_CONC_LMT_TIER_OID="2496827"
+                                      OPER_UNIT_CREDIT_PARA_OID="420001" STATUS="A" SYNCSTR="2014/11/25 10:10:29"
+                                      VERSION="1"/>
+                    <OU_CONC_LMT_TIER CLIENT_CLASS_OID="190004" CONC_LMT_HAIRCUT_PERCENTAGE="70"
+                                      INSTMT_GRP_CATEGORY_OID="360004" LAST_MOD_TIMESTAMP="2014/11/25 10:10:29"
+                                      LAST_MOD_USER="TM001" OPER_UNIT_CONC_LMT_TIER_OID="2496828"
+                                      OPER_UNIT_CREDIT_PARA_OID="420001" STATUS="A" SYNCSTR="2014/11/25 10:10:29"
+                                      VERSION="1"/>
+                </OPER_UNIT_CREDIT_PARA_2>
+            </OPERATION_UNIT>
+        </DO-DATA>
+    </BODY>
+    <HEADER CL_ERR_CODE="" CL_ERR_PARA="" CL_RESULT="CL_SUCCESS"/>
+</MSG>

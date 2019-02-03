@@ -1,0 +1,148 @@
+= ITS Static Data API Documentation
+:doctype: book
+:compat-mode:
+:page-layout!:
+:toc: right
+:toclevels: 2
+:sectanchors:
+:sectlinks:
+:sectnums:
+:linkattrs:
+:source-highlighter: highlightjs
+
+
+[[overview]]
+= Overview
+
+ITS Static Data RESTful API Documentation
+
+[[overview-general]]
+== General
+
+[[overview-http-verbs]]
+=== HTTP verbs
+
+|===
+| Verb | Usage
+
+| `GET`
+| Used to retrieve a resource (idempotent)
+
+| `POST`
+| Used to create a new resource
+
+| `PUT`
+| Used to update an existing resource (idempotent)
+
+| `DELETE`
+| Used to delete an existing resource
+|===
+
+[[overview-datatype]]
+=== Data Type
+
+Request parameters and response object support the following data types:
+
+|===
+| Verb | Remark
+
+| String
+| -
+
+| Integer
+| -
+
+| Decimal
+| -
+
+| Boolean
+| Either Y or N
+
+| LocalDate
+| In YYYY-MM-DD format
+
+| LocalDateTime
+| In YYYY-MM-DD HH:MI:SS format
+
+|===
+
+
+[[overview-pagination]]
+=== Pagination
+
+Spring pagination facilities offer following request parameters:
+
+.Request parameters
+|===
+| Path | Type | Optional | Description
+
+| page
+| Integer
+| false
+| Page you want to retrieve, 0 indexed and defaults to 0.
+
+| size
+| Integer
+| false
+| Size of the page you want to retrieve, defaults to {defaultPageSize}.
+
+| sort
+| String
+| false
+| Properties that should be sorted by in the format `property,property(,ASC\|DESC)`.
+Default sort direction is ascending. Use multiple sort parameters if you want to
+switch directions, e.g. `?sort=firstname&sort=lastname,asc`.
+
+| direction
+| String
+| false
+| Soring direction.  Must be either ASC or DESC
+|===
+
+Pagination response has following structure:
+
+.Response structure
+|===
+| Path | Type | Optional | Description
+
+| currentPage
+| Integer
+| false
+| Current page.  0 is the first page
+
+| totalPage
+| Integer
+| false
+| Total pages with current page size.
+
+| pageSize
+| Integer
+| false
+| Requested size of the page.
+
+| totalCount
+| Integer
+| false
+| Total number of matched records
+
+| hasNext
+| Boolean
+| false
+| Whether there is next page
+
+| content
+| Array<Object>
+| false
+| Items in this page.
+
+| extraContent
+| Map<String, Object>
+| true
+| Additional items
+
+|===
+
+[[resources]]
+== Resources
+include::currencies/index.adoc[]
+include::exchanges/index.adoc[]
