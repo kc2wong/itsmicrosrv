@@ -29,7 +29,7 @@ class SecurityConfiguration(val tokenProvider: TokenProvider) {
         return http.authorizeExchange()
                 .pathMatchers("$CONTEXT_PATH/papi/challenge").permitAll()
                 .pathMatchers("$CONTEXT_PATH/papi/response").permitAll()
-                .pathMatchers("$CONTEXT_PATH_INTERNAL/v1/papi/authen-token").permitAll()
+                .pathMatchers("$CONTEXT_PATH_INTERNAL/papi/authen-token").permitAll()
                 .pathMatchers("/**").authenticated()
                 .and()
                 .addFilterAt(authFilter, SecurityWebFiltersOrder.AUTHENTICATION)
