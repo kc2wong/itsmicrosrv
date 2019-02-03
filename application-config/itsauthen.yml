@@ -1,0 +1,10 @@
+companyCode: WLB
+server:
+  port: 8100
+spring:
+  application:
+    name: itsauthen
+jwt:
+  secret: my-secret-token-to-change-in-production
+  token-validity-in-seconds: 86500
+  token-validity-in-seconds-for-remember-me: 2592000

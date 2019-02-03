@@ -1,0 +1,13 @@
+endpoints:
+  beans:
+    enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+server:
+  port: 8200
+spring:
+  application:
+    name: itsstaticdata
