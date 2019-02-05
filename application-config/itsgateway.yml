@@ -16,20 +16,20 @@ spring:
       - id: itsaccount
         uri: lb://itsaccount
         predicates:
-        - Path=/account-serv/**
+        - Path=/account/**
       - id: itsauthen
         uri: lb://itsauthen
         predicates:
-        - Path=/authen-serv/**
+        - Path=/authentication/**
       - id: itsmarketdata
         uri: lb://itsmarketdata
         predicates:
-        - Path=/market-data/**
+        - Path=/marketdata/**
       - id: itsorder
         uri: lb://itsorder
         predicates:
-        - Path=/order-serv/**
+        - Path=/order/**
       - id: itsstaticdata
         uri: lb://itsstaticdata
         predicates:
-        - Path=/static-data/**
+        - Path=/staticdata/**
