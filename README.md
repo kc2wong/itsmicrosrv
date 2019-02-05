@@ -1,9 +1,10 @@
 # itsmicrosrv
 
 
-This project demostrates a cloud native microservices application.  It is a spring boot application written in Kotlin, with the following features demostrated :
+This project demonstrates a cloud native microservice application.  It is a spring boot application written in Kotlin, with the following features demonstrated :
  
-  - Spring Web Reactive
+  - Spring WebFlux
+  - Spring Security
   - Spring Cloud Config
   - Spring Cloud Discovery
   - Spring Cloud Zuul
@@ -15,3 +16,30 @@ This project demostrates a cloud native microservices application.  It is a spri
 ## Application Architecture
 
 ![](doc/architecture.png)
+
+
+### Gateway Service
+
+### Discovery Service
+
+### Config Service
+
+### Authentication Service
+
+### Static Data Service
+
+### Account Service
+
+### Order Service
+
+### Market Data Service
+
+### Zipkin Service
+
+---
+
+### Quick Start
+
+---
+
+### Next Steps

@@ -8,9 +8,6 @@ import org.springframework.web.reactive.config.EnableWebFlux
 @EnableWebFlux
 class ItsmarketdataApplication
 
-const val CONTEXT_PATH = "/marketdata/v1"
-const val CONTEXT_PATH_INTERNAL = "/marketdata/int/v1"
-
 fun main(args: Array<String>) {
     runApplication<ItsmarketdataApplication>(*args)
 }

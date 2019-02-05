@@ -1,0 +1,31 @@
+apply plugin: 'maven-publish'
+
+dependencies {
+	implementation("io.jsonwebtoken:jjwt:0.9.0")
+	implementation("javax.servlet:javax.servlet-api:4.0.1")
+    implementation("org.springframework.boot:spring-boot-starter-security")
+
+	implementation project(':itscommon')
+}
+
+task sourcesJar(type: Jar) {
+	from sourceSets.main.allSource
+	classifier = 'sources'
+}
+
+publishing {
+	publications {
+		maven( MavenPublication ) {
+			from components.java
+		}
+	}
+	repositories {
+		maven {
+			url myMavenRepoWriteUrl
+			credentials {
+				username myMavenRepoWriteUsername
+				password myMavenRepoWritePassword
+			}
+		}
+	}
+}

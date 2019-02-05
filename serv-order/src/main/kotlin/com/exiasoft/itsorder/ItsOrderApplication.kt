@@ -8,9 +8,6 @@ import org.springframework.web.reactive.config.EnableWebFlux
 @EnableWebFlux
 class ItsOrderApplication
 
-const val CONTEXT_PATH = "/order/v1"
-const val CONTEXT_PATH_INTERNAL = "/order/int/v1"
-
 fun main(args: Array<String>) {
 	runApplication<ItsOrderApplication>(*args)
 }

@@ -12,6 +12,7 @@ import com.exiasoft.itsstaticdata.service.ExchangeService
 import com.exiasoft.itsstaticdata.service.InstrumentService
 import mu.KotlinLogging
 import org.springframework.http.server.reactive.ServerHttpRequest
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
@@ -28,6 +29,7 @@ class PriceQuoteController(val exchangeService: ExchangeService,
 
     private val logger = KotlinLogging.logger {}
 
+    @PreAuthorize("@permissionEvaluator.hasPermission(authentication, '{EnquiryGrp.InstrumentPrice.Enquiry}')")
     @GetMapping("/sapi/exchanges/{exchangeCode}/instruments/{instrumentCode}/quotes")
     fun findOne(@PathVariable exchangeCode: String,
                 @PathVariable instrumentCode: String,

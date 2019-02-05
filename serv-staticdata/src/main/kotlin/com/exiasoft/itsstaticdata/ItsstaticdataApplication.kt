@@ -8,9 +8,6 @@ import org.springframework.web.reactive.config.EnableWebFlux
 @EnableWebFlux
 class ItsstaticdataApplication
 
-const val CONTEXT_PATH = "/staticdata/v1"
-const val CONTEXT_PATH_INTERNAL = "/staticdata/int/v1"
-
 fun main(args: Array<String>) {
     runApplication<ItsstaticdataApplication>(*args)
 }
