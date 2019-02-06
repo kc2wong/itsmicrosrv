@@ -1,3 +1,10 @@
+cors:
+  allowed-origins: "*"
+  allowed-methods: "*"
+  allowed-headers: "*"
+  exposed-headers: "REMOTE_ADDR, Authorization, X-itsmicrosrv-alert, X-itsmicrosrv-alertParam, X-itsmicrosrv-rptFile, X-itsmicrosrv-errorCode, X-itsmicrosrv-errorParam"
+  allow-credentials: true
+  max-age: 1800
 its:
   page:
     max:
@@ -10,6 +17,12 @@ jwt:
   secret: my-secret-token-to-change-in-production
   token-validity-in-seconds: 86500
   token-validity-in-seconds-for-remember-me: 2592000
+# actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "beans,mappings"
 spring:
   jackson:
     serialization:
