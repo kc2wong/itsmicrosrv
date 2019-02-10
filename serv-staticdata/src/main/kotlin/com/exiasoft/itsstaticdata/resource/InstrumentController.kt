@@ -21,6 +21,7 @@ import org.springframework.data.domain.Pageable
 import org.springframework.http.ResponseEntity
 import org.springframework.http.server.reactive.ServerHttpRequest
 import org.springframework.web.bind.annotation.*
+import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 @RestController
@@ -34,12 +35,31 @@ class InstrumentController(
 
     private val logger = KotlinLogging.logger {}
 
+    @GetMapping("/sapi/instruments")
+    fun find(@RequestParam(name = "exchangeCode", required = true) exchangeCode: String,
+             @RequestParam(name = "instrumentCode", required = false) instrumentCodeList: List<String>,
+             authenToken: AuthenticationToken): Mono<ResponseEntity<List<InstrumentDto>>> {
+        logger.info("REST request to get instruments, exchangeCode = {}, instrumentCode = {}", exchangeCode, instrumentCodeList)
+        val result = exchangeService.findByIdentifier(authenToken, exchangeCode).flatMap { exch ->
+            exchangeBoardService.find(authenToken, exch.exchangeOid, null, null, PageUtil.unlimit()).flatMap { exchBoardList ->
+                val ids = exchBoardList.content.flatMap { exchBoard ->
+                    instrumentCodeList.asSequence().map { instrumentCode ->
+                        Instrument.Id(exchBoard.exchangeBoardOid, instrumentCode)
+                    }.toList()
+                }
+                instrumentMapper.modelToDto(authenToken, instrumentService.findByIdentifiers(authenToken, ids)).collectList()
+            }
+        }
+        logger.debug("Instrument retrieved, result = {} ", result)
+        return WebResponseUtil.wrapOrNotFound(result)
+    }
+
     @GetMapping("/sapi/exchanges/{exchangeCode}/instruments/{instrumentCode}")
     fun findOne(@PathVariable exchangeCode: String,
                 @PathVariable instrumentCode: String,
                 authenToken: AuthenticationToken,
                 httpRequest: ServerHttpRequest): Mono<ResponseEntity<InstrumentDto>> {
-        logger.debug("REST request to get a Instrument, exchangeCode = {}, instrumentCode = {}", exchangeCode, instrumentCode)
+        logger.trace("REST request to get a Instrument, exchangeCode = {}, instrumentCode = {}", exchangeCode, instrumentCode)
         val instrument = exchangeService.findByIdentifier(authenToken, exchangeCode).flatMap { exch ->
             exchangeBoardService.find(authenToken, exch.exchangeOid, null, null, PageUtil.unlimit()).flatMap { exchBoardList ->
                 instrumentService.find(authenToken, exchBoardList.map { eb -> eb.exchangeBoardOid }.toSet(), instrumentCode, null, null, PageUtil.unlimit())            }

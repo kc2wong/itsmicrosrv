@@ -31,8 +31,9 @@ class CurrencyServiceDemoImpl(
         return id == obj.currencyCode
     }
 
-    override fun find(authenToken: AuthenticationToken, descptDefLang: String?, pageable: Pageable): Mono<Page<Currency>> {
+    override fun find(authenToken: AuthenticationToken, currencyCode: String?, descptDefLang: String?, pageable: Pageable): Mono<Page<Currency>> {
         var result = data.asSequence().toList()
+        result = currencyCode?.let { result.filter { e -> e.currencyCode.contains(it, true) }} ?: result
         result = descptDefLang?.let { result.filter { e -> e.descptDefLang.contains(it, true) }} ?: result
         result = result.sortedWith(createComparator(pageable))
         return Mono.just(getPage(authenToken, result, pageable))

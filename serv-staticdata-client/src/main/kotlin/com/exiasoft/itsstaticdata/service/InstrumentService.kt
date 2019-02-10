@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageImpl
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
+import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 @Service
@@ -28,6 +29,12 @@ class InstrumentService(val simeplStockService: SimpleStockService): BaseService
     override fun findByIdentifier(authenToken: AuthenticationToken, id: Instrument.Id): Mono<Instrument> {
         return simeplStockService.findByIdentifier(authenToken, id).map {
             it as Instrument
+        }
+    }
+
+    fun findByIdentifiers(authenToken: AuthenticationToken, ids: List<Instrument.Id>): Flux<Instrument> {
+        return Flux.fromIterable(ids).flatMap { id ->
+            findByIdentifier(authenToken, id)
         }
     }
 

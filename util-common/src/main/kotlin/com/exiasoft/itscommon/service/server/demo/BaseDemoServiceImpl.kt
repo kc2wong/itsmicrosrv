@@ -47,7 +47,7 @@ abstract class BaseDemoServiceImpl<K, T>(val tokenProvider: TokenProvider, val x
 
     override fun findAll(authenToken: AuthenticationToken, pageable: Pageable): Mono<Page<T>> {
         getItsFunctionCode(authenToken)
-        val result = data.sortedWith(createComparator(pageable))
+        val result = if (pageable != Pageable.unpaged()) data.sortedWith(createComparator(pageable)) else data
         return Mono.just(getPage(authenToken, result, pageable))
     }
 
@@ -85,9 +85,14 @@ abstract class BaseDemoServiceImpl<K, T>(val tokenProvider: TokenProvider, val x
 
     fun getPage(authenToken: AuthenticationToken, result: List<T>, pageable: Pageable): Page<T> {
         getItsFunctionCode(authenToken)
-        val startIdx = Math.min(pageable.pageNumber * pageable.pageSize, result.size)
-        val endIdx = Math.min((pageable.pageNumber + 1) * pageable.pageSize, result.size)
-        return PageImpl(result.subList(startIdx, endIdx), pageable, result.size.toLong())
+        if (pageable == Pageable.unpaged()) {
+            return PageImpl(result, pageable, result.size.toLong())
+        }
+        else {
+            val startIdx = Math.min(pageable.pageNumber * pageable.pageSize, result.size)
+            val endIdx = Math.min((pageable.pageNumber + 1) * pageable.pageSize, result.size)
+            return PageImpl(result.subList(startIdx, endIdx), pageable, result.size.toLong())
+        }
     }
 
     private fun getItsFunctionCode(authenToken: AuthenticationToken) : String {

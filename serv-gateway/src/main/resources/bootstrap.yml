@@ -11,6 +11,21 @@ spring:
         enabled: true
         service-id: itsconfig
       name: itsgateway
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            exposedHeaders:
+              - "Authorization"
+              - "X-Forwarded-For"
+              - "X-its-alert"
+              - "X-its-alertParam"
+              - "X-its-rptFile"
+              - "X-its-errorCode"
+              - "X-its-errorParam"
   sleuth:
     sampler:
       probability: 1

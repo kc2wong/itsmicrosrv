@@ -10,7 +10,9 @@ import com.exiasoft.itsmarketdata.service.PriceQuoteService
 import com.exiasoft.itsstaticdata.service.ExchangeBoardService
 import com.exiasoft.itsstaticdata.service.ExchangeService
 import com.exiasoft.itsstaticdata.service.InstrumentService
+import com.exiasoft.itsstaticdata.service.SimpleExchangeService
 import mu.KotlinLogging
+import org.springframework.data.domain.Pageable
 import org.springframework.http.server.reactive.ServerHttpRequest
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.GetMapping
@@ -21,7 +23,7 @@ import reactor.core.publisher.Mono
 
 @RestController
 @RequestMapping(CONTEXT_PATH)
-class PriceQuoteController(val exchangeService: ExchangeService,
+class PriceQuoteController(val exchangeService: SimpleExchangeService,
                            val exchangeBoardService: ExchangeBoardService,
                            val instrumentService: InstrumentService,
                            val priceQuoteService: PriceQuoteService,
@@ -35,11 +37,11 @@ class PriceQuoteController(val exchangeService: ExchangeService,
                 @PathVariable instrumentCode: String,
                 authenToken: AuthenticationToken,
                 httpRequest: ServerHttpRequest): Mono<PriceQuoteDto> {
-        logger.debug("REST request to get a price quote, exchangeCode = {}, instrumentCode = {}", exchangeCode, instrumentCode)
+        logger.trace("REST request to get a price quote, exchangeCode = {}, instrumentCode = {}", exchangeCode, instrumentCode)
 
         return exchangeService.findByIdentifier(authenToken, exchangeCode).flatMap { exch ->
             exchangeBoardService.find(authenToken, exch.exchangeOid, null, null, PageUtil.unlimit()).flatMap { exchBoardPage ->
-                instrumentService.find(authenToken, exchBoardPage.content.map { exchBoard -> exchBoard.exchangeBoardOid }.toSet(), instrumentCode, null, null, PageUtil.unlimit()).flatMap { instrumentPage ->
+                instrumentService.find(authenToken, exchBoardPage.content.map { exchBoard -> exchBoard.exchangeBoardOid }.toSet(), instrumentCode, null, null, Pageable.unpaged()).flatMap { instrumentPage ->
                     val instrument = instrumentPage.content.first()
                     priceQuoteMapper.modelToDto(authenToken, priceQuoteService.findByIdentifier(authenToken, instrument.identifier))
                 }

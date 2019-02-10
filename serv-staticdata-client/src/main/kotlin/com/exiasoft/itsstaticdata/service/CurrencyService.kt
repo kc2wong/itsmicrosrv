@@ -9,6 +9,6 @@ import reactor.core.publisher.Mono
 
 interface CurrencyService : BaseServiceIntf<String, Currency> {
 
-    fun find(authenToken: AuthenticationToken, descptDefLang: String?, pageable: Pageable): Mono<Page<Currency>>
+    fun find(authenToken: AuthenticationToken, currencyCode: String?, descptDefLang: String?, pageable: Pageable): Mono<Page<Currency>>
 
 }

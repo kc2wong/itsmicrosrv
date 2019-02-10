@@ -36,7 +36,7 @@ class CurrencyController(
             request: ServerHttpRequest
     ): Mono<ResponseEntity<PagingSearchResult<CurrencyDto>>> {
         logger.debug("REST request to get a page of Currency")
-        val page = currencyService.find(authenToken, descptDefLang, pageable)
+        val page = currencyService.find(authenToken, null, descptDefLang, pageable)
         logger.info("Currency page retrieved, result = {} ", page)
         return WebResponseUtil.generatePaginationResponseEntity(request.path.toString(), page) { v -> currencyMapper.modelToDto(authenToken, v) }
     }
@@ -71,12 +71,14 @@ class CurrencyIntController(
     }
 
     @GetMapping("/sapi/currencies")
-    fun find(@RequestParam(value = "descptDefLang", required = false) descptDefLang: String?,
+    fun find(@RequestParam(value = "currencyCode", required = false) currencyCode: String?,
+             @RequestParam(value = "descptDefLang", required = false) descptDefLang: String?,
              @PageableDefault(sort = ["currencyOid,asc"]) pageable: Pageable,
              authenToken: AuthenticationToken,
              request: ServerHttpRequest
     ): Mono<PagingSearchResult<Currency>> {
-        return currencyService.find(authenToken, descptDefLang, pageable).map {
+        logger.debug("REST request to search currencies, currencyCode = {}, descptDefLang = {}", currencyCode, descptDefLang)
+        return currencyService.find(authenToken, currencyCode, descptDefLang, pageable).map {
             PagingSearchResult(it, it.content)
         }
     }

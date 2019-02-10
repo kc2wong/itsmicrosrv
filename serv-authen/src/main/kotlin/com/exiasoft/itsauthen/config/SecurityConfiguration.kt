@@ -27,6 +27,7 @@ class SecurityConfiguration(val tokenProvider: TokenProvider) {
         authFilter.setServerAuthenticationConverter(JwtAuthenticationConverter(tokenProvider))
 
         return http.authorizeExchange()
+                .pathMatchers("/actuator/**").permitAll()
                 .pathMatchers("$CONTEXT_PATH/papi/challenge").permitAll()
                 .pathMatchers("$CONTEXT_PATH/papi/response").permitAll()
                 .pathMatchers("$CONTEXT_PATH_INTERNAL/papi/authen-token").permitAll()

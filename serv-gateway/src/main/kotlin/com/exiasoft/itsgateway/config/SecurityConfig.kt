@@ -4,6 +4,7 @@ import com.exiasoft.itsauthen.service.impl.JwtAuthenticationConverter
 import com.exiasoft.itscommon.authen.TokenProvider
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.http.HttpMethod
 import org.springframework.security.authentication.ReactiveAuthenticationManager
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity
@@ -26,6 +27,7 @@ class SecurityConfig(val tokenProvider: TokenProvider) {
         authFilter.setServerAuthenticationConverter(JwtAuthenticationConverter(tokenProvider))
 
         return http.authorizeExchange()
+                .pathMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                 .pathMatchers("/actuator/**").permitAll()
                 .pathMatchers("/authentication/**").permitAll()
                 .pathMatchers("/**").authenticated().and().httpBasic()

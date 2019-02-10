@@ -47,48 +47,6 @@ class InstrumentMapper(val currencyService: CurrencyService, val exchangeService
             }
         }
 
-/*
-        val exchBoardPsMap = mutableMapOf<String, ExchangeBoardPriceSpread>()
-        val exchBoardMap = mutableMapOf<String, ExchangeBoard>()
-        val exchMap = mutableMapOf<String, SimpleExchange>()
-        val ccyMap = mutableMapOf<String, Currency>()
-
-        return instruments.flatMap { instrument ->
-
-            val currencyResult = Mono.justOrEmpty(ccyMap[instrument.tradingCurrencyOid])
-                    .switchIfEmpty(currencyService.findByOid(authenToken, instrument.tradingCurrencyOid))
-            val exchBoardResult = Mono.justOrEmpty(exchBoardMap[instrument.exchangeBoardOid])
-                    .switchIfEmpty(exchangeBoardService.findByOid(authenToken, instrument.exchangeBoardOid))
-            val exchBoardPsResult = Mono.justOrEmpty(exchBoardPsMap[instrument.exchangeBoardPriceSpreadOid])
-                    .switchIfEmpty(exchangeBoardPriceSpreadService.findByOid(authenToken, instrument.exchangeBoardPriceSpreadOid))
-
-            currencyResult.zipWith(exchBoardResult).zipWith(exchBoardPsResult).flatMap { result ->
-                val currency = result.t1.t1
-                val exchBoard = result.t1.t2
-                val exchBoardPriceSpread = result.t2
-
-                ccyMap[instrument.tradingCurrencyOid] = currency
-                exchBoardMap[instrument.exchangeBoardOid] = exchBoard
-                exchBoardPsMap[instrument.exchangeBoardPriceSpreadOid] = exchBoardPriceSpread
-
-                val instrumentDto = InstrumentDto()
-                BeanUtils.copyProperties(instrument, instrumentDto)
-
-                instrumentDto.tradingCurrencyCode = currency.currencyCode
-                instrumentDto.exchangeBoardCode = exchBoard.exchangeBoardCode
-                instrumentDto.exchangeBoardPsCode = exchBoardPriceSpread.exchangeBoardPriceSpreadCode
-
-                val exchResult = Mono.justOrEmpty(exchMap[exchBoard.exchangeOid])
-                        .switchIfEmpty(exchangeService.findByOid(authenToken, exchBoard.exchangeOid))
-                exchResult.map { exch ->
-                    exchMap[exchBoard.exchangeOid] = exch
-                    instrumentDto.exchangeCode = exch.exchangeCode
-
-                    instrumentDto
-                }
-            }
-        }
-*/
     }
 
     fun modelToDto(authenToken: AuthenticationToken, instruments: List<Instrument>): Flux<InstrumentDto> {
@@ -97,35 +55,10 @@ class InstrumentMapper(val currencyService: CurrencyService, val exchangeService
 
     fun modelToDto(authenToken: AuthenticationToken, instrument: Mono<Instrument>): Mono<InstrumentDto> {
         return modelToDto(authenToken, instrument.flatMapMany { Mono.just(it) }).last()
-/*
-        return instrument.flatMap { i ->
-
-            val exchBoardResult = exchangeBoardService.findByOid(authenToken, i.exchangeBoardOid)
-            val exchResult = exchangeService.findAll(authenToken, PageUtil.unlimit())
-            val exchBoardPsResult = exchangeBoardPriceSpreadService.findByOid(authenToken, i.exchangeBoardPriceSpreadOid)
-            val currencyResult = currencyService.findByOid(authenToken, i.tradingCurrencyOid)
-
-            exchBoardResult.zipWith(exchResult).zipWith(exchBoardPsResult).zipWith(currencyResult).map {
-                val exchBoard = it.t1.t1.t1
-                val pageOfExch = it.t1.t1.t2
-                val exchBoardPs = it.t1.t2
-                val ccy = it.t2
-
-                val instrumentDto = InstrumentDto()
-                BeanUtils.copyProperties(i, instrumentDto)
-                pageOfExch.content.firstOrNull()?.let { exch -> instrumentDto.exchangeCode = exch.exchangeCode }
-                instrumentDto.exchangeBoardCode = exchBoard.exchangeBoardCode
-                instrumentDto.exchangeBoardPsCode = exchBoardPs.exchangeBoardPriceSpreadCode
-                instrumentDto.tradingCurrencyCode = ccy.currencyCode
-                instrumentDto
-
-            }
-        }
-*/
     }
 
-    fun modelToDto(authenToken: AuthenticationToken, instrument: Instrument): InstrumentDto {
-        return modelToDto(authenToken, Mono.just(instrument)).block()!!
-    }
+//    fun modelToDto(authenToken: AuthenticationToken, instrument: Instrument): InstrumentDto {
+//        return modelToDto(authenToken, Mono.just(instrument)).block()!!
+//    }
 
 }

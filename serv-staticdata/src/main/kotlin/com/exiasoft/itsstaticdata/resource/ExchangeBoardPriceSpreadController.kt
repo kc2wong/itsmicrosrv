@@ -18,6 +18,7 @@ import mu.KotlinLogging
 import org.springframework.data.domain.Pageable
 import org.springframework.http.ResponseEntity
 import org.springframework.http.server.reactive.ServerHttpRequest
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Mono
 
@@ -32,7 +33,19 @@ class ExchangeBoardPriceSpreadController(
 
     private val logger = KotlinLogging.logger {}
 
+    @PreAuthorize("@permissionEvaluator.hasPermission(authentication, '{StaticDataGrp.ExchBrdPriceSpread.Maintenance,StaticDataGrp.LookupHelper}')")
+    @GetMapping("/sapi/price-spreads")
+    fun findAll(@PageableDefault(sort = ["exchangeBoardPriceSpreadCode,asc"]) pageable: Pageable,
+                authenToken: AuthenticationToken,
+                request: ServerHttpRequest
+    ): Mono<ResponseEntity<PagingSearchResult<ExchangeBoardPriceSpreadDto>>> {
+        logger.info("REST request to get a page of ExchangeBoardPriceSpread")
+        val page = exchangeBoardPriceSpreadService.find(authenToken, null, null, pageable)
+        logger.info("ExchangeBoardPriceSpread page retrieved, result = {} ", page)
+        return WebResponseUtil.generatePaginationResponseEntity(request.path.toString(), page) { v -> exchangeBoardPriceSpreadMapper.modelToDto(authenToken, v) }
+    }
 
+    @PreAuthorize("@permissionEvaluator.hasPermission(authentication, '{StaticDataGrp.ExchBrdPriceSpread.Maintenance,StaticDataGrp.LookupHelper}')")
     @GetMapping("/sapi/exchanges/{exchangeCode}/exchange-boards/{exchangeBoardCode}/price-spreads/{priceSpreadCode}")
     fun findOne(@PathVariable exchangeCode: String,
                 @PathVariable exchangeBoardCode: String,
@@ -44,13 +57,11 @@ class ExchangeBoardPriceSpreadController(
 
         val exchBoardPriceSpread = exchangeService.findByIdentifier(authenToken, exchangeCode).flatMap { exch ->
             exchangeBoardService.findByIdentifier(authenToken, ExchangeBoard.Id(exch.exchangeOid, exchangeBoardCode)).flatMap { exchBoard ->
-                exchangeBoardPriceSpreadService.findByIdentifier(authenToken, ExchangeBoardPriceSpread.Id(exchBoard.exchangeBoardOid, priceSpreadCode)).flatMap {
-                    Mono.just(exchangeBoardPriceSpreadMapper.modelToDto(authenToken,it, exchBoard))
-                }
+                exchangeBoardPriceSpreadService.findByIdentifier(authenToken, ExchangeBoardPriceSpread.Id(exchBoard.exchangeBoardOid, priceSpreadCode))
             }
         }
         logger.info("ExchangeBoardPriceSpread retrieved, result = {} ", exchBoardPriceSpread)
-        return WebResponseUtil.wrapOrNotFound(exchBoardPriceSpread)
+        return WebResponseUtil.wrapOrNotFound(exchangeBoardPriceSpreadMapper.modelToDto(authenToken, exchBoardPriceSpread))
     }
 }
 
