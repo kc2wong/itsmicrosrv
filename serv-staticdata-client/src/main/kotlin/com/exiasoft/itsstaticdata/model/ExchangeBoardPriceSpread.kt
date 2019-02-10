@@ -50,7 +50,8 @@ data class ExchangeBoardPriceSpread(
         var syncstr: String,
 
         @XStreamAsAttribute
-        @XStreamAlias("STATUS") @XStreamConverter(StatusConverter::class)
+        @XStreamAlias("STATUS")
+        @XStreamConverter(StatusConverter::class)
         @JsonSerialize(using = StatusSerializer::class)
         @JsonDeserialize(using = StatusDeserializer::class)
         var status: Status,

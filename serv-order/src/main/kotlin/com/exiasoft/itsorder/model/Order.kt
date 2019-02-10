@@ -42,7 +42,7 @@ data class Order(
         override var exchangeCode: String,
 
         @XStreamAsAttribute
-        @XStreamAlias("MARKET_INSTRUMENT_OID")
+        @XStreamAlias("INSTRUMENT_OID")
         override var instrumentOid: String,
 
         @XStreamAsAttribute

@@ -1,7 +1,12 @@
 package com.exiasoft.itsorder.mapper
 
 import com.exiasoft.itscommon.authen.AuthenticationToken
+import com.exiasoft.itsorder.dto.ChargeCommissionDto
+import com.exiasoft.itsorder.dto.OrderDto
+import com.exiasoft.itsorder.dto.OrderExecutionDto
 import com.exiasoft.itsorder.dto.SimpleOrderDto
+import com.exiasoft.itsorder.model.ChargeCommission
+import com.exiasoft.itsorder.model.Order
 import com.exiasoft.itsorder.model.SimpleOrder
 import com.exiasoft.itsstaticdata.model.Instrument
 import com.exiasoft.itsstaticdata.service.InstrumentService
@@ -13,7 +18,39 @@ import reactor.core.publisher.Mono
 @Component
 class OrderMapper(val instrumentService: InstrumentService) {
 
-    fun modelToDto(authenToken: AuthenticationToken, simpleOrderList: Flux<SimpleOrder>): Flux<SimpleOrderDto> {
+    fun modelToDto(authenToken: AuthenticationToken, orderList: Flux<Order>): Flux<OrderDto> {
+        val instrumentMap = mutableMapOf<String, Instrument>()
+        return orderList.flatMap {order ->
+            Mono.justOrEmpty(instrumentMap[order.instrumentOid]).switchIfEmpty(
+                    instrumentService.findByOid(authenToken, order.instrumentOid)
+            ).map {instrument ->
+                val orderDto = OrderDto()
+                BeanUtils.copyProperties(order, orderDto)
+                orderDto.orderExecution = order.orderExecution.map {
+                    val orderExecutionDto = OrderExecutionDto()
+                    BeanUtils.copyProperties(it, orderExecutionDto)
+                    orderExecutionDto
+                }.toList()
+                instrumentMap[order.instrumentOid] = instrument
+                orderDto.instrumentCode = instrument.instrumentCode
+                orderDto
+            }
+        }
+    }
+
+    fun modelToDto(authenToken: AuthenticationToken, orderList: List<Order>): Flux<OrderDto> {
+        return modelToDto(authenToken, Flux.fromIterable(orderList))
+    }
+
+    fun modelToDto(authenToken: AuthenticationToken, order: Mono<Order>): Mono<OrderDto> {
+        return modelToDto(authenToken, order.flatMapMany { Mono.just(it) }).last()
+    }
+
+    fun modelToDto(authenToken: AuthenticationToken, order: Order): Mono<OrderDto> {
+        return modelToDto(authenToken, Mono.just(order))
+    }
+
+    fun simpleModelToDto(authenToken: AuthenticationToken, simpleOrderList: Flux<SimpleOrder>): Flux<SimpleOrderDto> {
         val instrumentMap = mutableMapOf<String, Instrument>()
         return simpleOrderList.flatMap {simpleOrder ->
             Mono.justOrEmpty(instrumentMap[simpleOrder.instrumentOid]).switchIfEmpty(
@@ -28,12 +65,16 @@ class OrderMapper(val instrumentService: InstrumentService) {
         }
     }
 
-    fun modelToDto(authenToken: AuthenticationToken, simpleOrderList: List<SimpleOrder>): Flux<SimpleOrderDto> {
-        return modelToDto(authenToken, Flux.fromIterable(simpleOrderList))
+    fun simpleModelToDto(authenToken: AuthenticationToken, simpleOrderList: List<SimpleOrder>): Flux<SimpleOrderDto> {
+        return simpleModelToDto(authenToken, Flux.fromIterable(simpleOrderList))
     }
 
-    fun modelToDto(authenToken: AuthenticationToken, simpleOrder: Mono<SimpleOrder>): Mono<SimpleOrderDto> {
-        return modelToDto(authenToken, simpleOrder.flatMapMany { Mono.just(it) }).last()
+    fun simpleModelToDto(authenToken: AuthenticationToken, simpleOrder: Mono<SimpleOrder>): Mono<SimpleOrderDto> {
+        return simpleModelToDto(authenToken, simpleOrder.flatMapMany { Mono.just(it) }).last()
+    }
+
+    fun simpleModelToDto(authenToken: AuthenticationToken, simpleOrder: SimpleOrder): Mono<SimpleOrderDto> {
+        return simpleModelToDto(authenToken, Mono.just(simpleOrder))
     }
 
 }

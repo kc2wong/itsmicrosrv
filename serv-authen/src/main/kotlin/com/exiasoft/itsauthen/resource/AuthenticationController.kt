@@ -16,19 +16,21 @@ import com.exiasoft.itscommon.util.WebResponseUtil
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import mu.KotlinLogging
-import org.springframework.http.*
+import org.springframework.http.HttpHeaders
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
+import org.springframework.http.server.reactive.ServerHttpRequest
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Mono
 import java.net.InetAddress
-import javax.servlet.http.HttpServletRequest
 
 @RestController
 @RequestMapping(CONTEXT_PATH)
 class AuthenticationController(
-        val loginService: AuthenticationService,
+        val authenticationService: AuthenticationService,
         val userProfileService: UserProfileService,
         val tokenProvider: TokenProvider,
         val applicationProperties: ApplicationConfig
@@ -37,13 +39,13 @@ class AuthenticationController(
     private val logger = KotlinLogging.logger {}
 
     @PostMapping("/papi/challenge")
-    fun initiateLogin(@RequestBody challenge: Challenge, httpRequest: HttpServletRequest): Mono<ResponseEntity<AuthenticationToken>> {
+    fun initiateLogin(@RequestBody loginChallenge: LoginChallenge, httpRequest: ServerHttpRequest): Mono<ResponseEntity<AuthenticationToken>> {
         logger.info ( "AuthenticationController.login() starts " )
-        val ipAddress = httpRequest.remoteAddr
-        logger.info ( "LoginController.login(), ipAddress = {}", ipAddress )
-        val response = loginService.initiateLogin(applicationProperties.companyCode, challenge.userid, InetAddress.getByName(ipAddress), true)
+        val ipAddress = getInetAddress(httpRequest)
+        logger.info ( "AuthenticationController.login(), ipAddress = {}", ipAddress )
+        val response = authenticationService.initiateLogin(applicationProperties.companyCode, loginChallenge.userid, ipAddress, true)
         return response.map {
-            val itsAuthentication = ItsAuthentication(Credential(challenge.userid, "", false))
+            val itsAuthentication = ItsAuthentication(Credential(loginChallenge.userid, "", false))
             val claims = mapOf(
                     "result" to (it.data["result"] ?: "fail"),
                     "type" to (it.data["type"] ?: ""),
@@ -60,25 +62,27 @@ class AuthenticationController(
             val token = tokenProvider.createToken(itsAuthentication, emptySet(), claims, 1000L * 30)
             val httpHeaders = HttpHeaders()
             httpHeaders.add(HEADER_AUTHORIZATION, token.idToken)
+            logger.info ( "AuthenticationController.login() finish " )
             ResponseEntity(token, httpHeaders, HttpStatus.OK)
         }
     }
 
     @PostMapping("/papi/response")
-    fun authenticate(@RequestBody authenRequest: Response, httpRequest: HttpServletRequest): Mono<ResponseEntity<AuthenticationToken>> {
+    fun authenticate(@RequestBody authenRequest: LoginResponse, httpRequest: ServerHttpRequest): Mono<ResponseEntity<AuthenticationToken>> {
         logger.info ( "AuthenticationController.authenticate() starts " )
-        val ipAddress = httpRequest.remoteAddr
+        val ipAddress = getInetAddress(httpRequest)
         logger.info ( "LoginController.authenticate(), authenRequest = {}, ipAddress = {}", authenRequest, ipAddress )
 
         var userid = ""
         var spkUskToken = authenRequest.spkUskToken
-        httpRequest.getHeader("Authorization")?.let {
+        val headers = httpRequest.headers
+        headers.getFirst("Authorization")?.let {
             val props = getDecodedJwt(it.substring(7).trim())
             userid = props["sub"] as String
         }
 
-        val response = loginService.authenticate(authenRequest.jsessionId, authenRequest.channelCode, authenRequest.token,
-                spkUskToken, authenRequest.wpkGsk, authenRequest.forcelogin, InetAddress.getByName(ipAddress))
+        val response = authenticationService.authenticate(authenRequest.jsessionId, authenRequest.channelCode, authenRequest.token,
+                spkUskToken, authenRequest.wpkGsk, authenRequest.forcelogin, ipAddress)
         return response.flatMap {
             val data = it.data
             val authentication = ItsAuthentication(Credential(userid, "", false))
@@ -93,6 +97,10 @@ class AuthenticationController(
                 ResponseEntity(token, httpHeaders, HttpStatus.OK)
             }
         }
+    }
+
+    private fun getInetAddress(httpRequest: ServerHttpRequest): InetAddress {
+        return httpRequest.remoteAddress?.let { it.address} ?: InetAddress.getLocalHost()
     }
 
     private fun getDecodedJwt(jwt: String): Map<String, Any> {
@@ -115,11 +123,11 @@ class AuthenticationController(
         return om.readValue(result, typeRef)
     }
 
-    class Challenge() {
+    class LoginChallenge {
         lateinit var userid: String
     }
 
-    class Response() {
+    class LoginResponse {
         lateinit var jsessionId: String
         lateinit var channelCode: String
         lateinit var token: String

@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
 
 @Service(value = "TradingAccountServiceImpl")
-@ItsFunction(["ClientAccountGrp.ClientAccount.Maintenance"])
 class TradingAccountServiceDemoImpl (
         tokenProvider: TokenProvider,
         xStreamProvider: XStreamProvider,
@@ -33,6 +32,7 @@ class TradingAccountServiceDemoImpl (
         return id == obj.tradingAccountCode
     }
 
+    @ItsFunction(["ClientAccountGrp.ClientAccount.Maintenance", "ClientAccountGrp.ClientAccount.Search"])
     override fun find(authenToken: AuthenticationToken, tradingAccountCode: String?, nameOneDefLang: String?, pageable: Pageable): Mono<Page<SimpleTradingAccount>> {
         var result = data.asSequence().toList()
         result = nameOneDefLang?.let { result.filter { e -> e.nameOneDefLang.contains(it, true) } } ?: result

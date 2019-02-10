@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.exiasoft.itscommon.config.ArgumentResolverConfiguration
+com.exiasoft.itscommon.config.WebFluxConfiguration

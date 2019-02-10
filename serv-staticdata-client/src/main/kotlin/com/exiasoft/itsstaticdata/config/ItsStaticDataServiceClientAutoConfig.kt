@@ -40,6 +40,18 @@ class ItsStaticDataServiceClientAutoConfig(@Value("\${itsstaticdata.application.
     }
 
     @Bean
+    @ConditionalOnMissingBean(name = ["OrderTypeServiceImpl"])
+    fun orderTypeServiceClient() : OrderTypeServiceImpl {
+        return OrderTypeServiceImpl(appName, loadBalancingClient, webClientBuilder)
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(name = ["SimpleExchangeServiceImpl"])
+    fun simpleExchangeServiceClient() : SimpleExchangeServiceImpl {
+        return SimpleExchangeServiceImpl(appName, loadBalancingClient, webClientBuilder)
+    }
+
+    @Bean
     @ConditionalOnMissingBean(name = ["SimpleOperationUnitServiceImpl"])
     fun simpleOperationUnitServiceClient() : SimpleOperationUnitServiceImpl {
         return SimpleOperationUnitServiceImpl(appName, loadBalancingClient, webClientBuilder)

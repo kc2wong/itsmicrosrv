@@ -25,6 +25,7 @@ class SecurityConfig(val tokenProvider: TokenProvider) {
         authFilter.setServerAuthenticationConverter(JwtAuthenticationConverter(tokenProvider))
 
         return http.authorizeExchange()
+                .pathMatchers("/actuator/**").permitAll()
                 .pathMatchers("/**").authenticated()
                 .and()
                 .addFilterAt(authFilter, SecurityWebFiltersOrder.AUTHENTICATION)

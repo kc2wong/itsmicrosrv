@@ -346,14 +346,6 @@
                                            LAST_MOD_TIMESTAMP="2015/05/21 13:59:38" SYNCSTR="2015/05/21 13:59:38"
                                            STATUS="A" VERSION="1"/>
             </EXCH_BRD_PRICE_SPREAD>
-            <EXCH_BRD_PRICE_SPREAD EXCH_BRD_PS_OID="290013" EXCH_BRD_OID="280009" EXCH_BRD_PS_CODE="1"
-                                   LAST_MOD_USER="SYSADMALL" LAST_MOD_TIMESTAMP="2015/02/27 18:14:16"
-                                   SYNCSTR="2000/01/01 00:00:00" STATUS="A" VERSION="1">
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="300605" EXCH_BRD_PS_OID="290013" PRICE_FROM="0.1"
-                                           PRICE_TO="9999" SPREAD_VALUE="0.01" LAST_MOD_USER="SYSADMALL"
-                                           LAST_MOD_TIMESTAMP="2015/02/27 18:14:37" SYNCSTR="2000/01/01 00:00:00"
-                                           STATUS="A" VERSION="1"/>
-            </EXCH_BRD_PRICE_SPREAD>
             <EXCH_BRD_PRICE_SPREAD EXCH_BRD_PS_OID="290002" EXCH_BRD_OID="280001" EXCH_BRD_PS_CODE="2"
                                    LAST_MOD_USER="AMS" LAST_MOD_TIMESTAMP="2015/05/21 13:59:07"
                                    SYNCSTR="2015/05/21 13:59:07" STATUS="A" VERSION="2">
@@ -1210,138 +1202,6 @@
                                            LAST_MOD_TIMESTAMP="2015/02/27 18:14:32" SYNCSTR="2000/01/01 00:00:00"
                                            STATUS="A" VERSION="1"/>
             </EXCH_BRD_PRICE_SPREAD>
-            <EXCH_BRD_PRICE_SPREAD EXCH_BRD_PS_OID="4228015" EXCH_BRD_OID="2028023" EXCH_BRD_PS_CODE="1"
-                                   LAST_MOD_USER="AMS" LAST_MOD_TIMESTAMP="2015/05/21 13:59:56"
-                                   SYNCSTR="2015/05/21 13:59:56" STATUS="A" VERSION="1">
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4228016" EXCH_BRD_PS_OID="4228015" PRICE_FROM="0.001"
-                                           PRICE_TO="0.01" SPREAD_VALUE="0.001" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:56" SYNCSTR="2015/05/21 13:59:56"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4228017" EXCH_BRD_PS_OID="4228015" PRICE_FROM="0.01"
-                                           PRICE_TO="0.1" SPREAD_VALUE="0.005" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:56" SYNCSTR="2015/05/21 13:59:56"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4228018" EXCH_BRD_PS_OID="4228015" PRICE_FROM="0.1"
-                                           PRICE_TO="0.5" SPREAD_VALUE="0.01" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:56" SYNCSTR="2015/05/21 13:59:56"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4228019" EXCH_BRD_PS_OID="4228015" PRICE_FROM="0.5"
-                                           PRICE_TO="1" SPREAD_VALUE="0.025" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:56" SYNCSTR="2015/05/21 13:59:56"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4228020" EXCH_BRD_PS_OID="4228015" PRICE_FROM="1"
-                                           PRICE_TO="5" SPREAD_VALUE="0.05" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:56" SYNCSTR="2015/05/21 13:59:56"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4228021" EXCH_BRD_PS_OID="4228015" PRICE_FROM="5"
-                                           PRICE_TO="10" SPREAD_VALUE="0.1" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:56" SYNCSTR="2015/05/21 13:59:56"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4228022" EXCH_BRD_PS_OID="4228015" PRICE_FROM="10"
-                                           PRICE_TO="100" SPREAD_VALUE="0.25" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:56" SYNCSTR="2015/05/21 13:59:56"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4228023" EXCH_BRD_PS_OID="4228015" PRICE_FROM="100"
-                                           PRICE_TO="200" SPREAD_VALUE="0.5" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:56" SYNCSTR="2015/05/21 13:59:56"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4228024" EXCH_BRD_PS_OID="4228015" PRICE_FROM="200"
-                                           PRICE_TO="500" SPREAD_VALUE="1" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:56" SYNCSTR="2015/05/21 13:59:56"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4228025" EXCH_BRD_PS_OID="4228015" PRICE_FROM="500"
-                                           PRICE_TO="1000" SPREAD_VALUE="2" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:56" SYNCSTR="2015/05/21 13:59:56"
-                                           STATUS="A" VERSION="1"/>
-            </EXCH_BRD_PRICE_SPREAD>
-            <EXCH_BRD_PRICE_SPREAD EXCH_BRD_PS_OID="4483173" EXCH_BRD_OID="2028025" EXCH_BRD_PS_CODE="2"
-                                   LAST_MOD_USER="AMS" LAST_MOD_TIMESTAMP="2015/06/25 15:27:45"
-                                   SYNCSTR="2015/06/25 15:27:45" STATUS="A" VERSION="1">
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483174" EXCH_BRD_PS_OID="4483173" PRICE_FROM="0.001"
-                                           PRICE_TO="0.01" SPREAD_VALUE="0.001" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:45" SYNCSTR="2015/06/25 15:27:45"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483175" EXCH_BRD_PS_OID="4483173" PRICE_FROM="0.01"
-                                           PRICE_TO="0.1" SPREAD_VALUE="0.005" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:45" SYNCSTR="2015/06/25 15:27:45"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483176" EXCH_BRD_PS_OID="4483173" PRICE_FROM="0.1"
-                                           PRICE_TO="0.5" SPREAD_VALUE="0.01" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:45" SYNCSTR="2015/06/25 15:27:45"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483177" EXCH_BRD_PS_OID="4483173" PRICE_FROM="0.5"
-                                           PRICE_TO="1" SPREAD_VALUE="0.025" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:45" SYNCSTR="2015/06/25 15:27:45"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483178" EXCH_BRD_PS_OID="4483173" PRICE_FROM="1"
-                                           PRICE_TO="5" SPREAD_VALUE="0.05" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:45" SYNCSTR="2015/06/25 15:27:45"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483179" EXCH_BRD_PS_OID="4483173" PRICE_FROM="5"
-                                           PRICE_TO="10" SPREAD_VALUE="0.1" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:45" SYNCSTR="2015/06/25 15:27:45"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483180" EXCH_BRD_PS_OID="4483173" PRICE_FROM="10"
-                                           PRICE_TO="100" SPREAD_VALUE="0.25" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:45" SYNCSTR="2015/06/25 15:27:45"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483181" EXCH_BRD_PS_OID="4483173" PRICE_FROM="100"
-                                           PRICE_TO="200" SPREAD_VALUE="0.5" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:45" SYNCSTR="2015/06/25 15:27:45"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483182" EXCH_BRD_PS_OID="4483173" PRICE_FROM="200"
-                                           PRICE_TO="500" SPREAD_VALUE="1" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:45" SYNCSTR="2015/06/25 15:27:45"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483183" EXCH_BRD_PS_OID="4483173" PRICE_FROM="500"
-                                           PRICE_TO="1000" SPREAD_VALUE="2" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:45" SYNCSTR="2015/06/25 15:27:45"
-                                           STATUS="A" VERSION="1"/>
-            </EXCH_BRD_PRICE_SPREAD>
-            <EXCH_BRD_PRICE_SPREAD EXCH_BRD_PS_OID="4224972" EXCH_BRD_OID="2028024" EXCH_BRD_PS_CODE="2"
-                                   LAST_MOD_USER="AMS" LAST_MOD_TIMESTAMP="2015/05/21 13:59:33"
-                                   SYNCSTR="2015/05/21 13:59:33" STATUS="A" VERSION="1">
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4224973" EXCH_BRD_PS_OID="4224972" PRICE_FROM="0.001"
-                                           PRICE_TO="0.01" SPREAD_VALUE="0.001" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:33" SYNCSTR="2015/05/21 13:59:33"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4224974" EXCH_BRD_PS_OID="4224972" PRICE_FROM="0.01"
-                                           PRICE_TO="0.1" SPREAD_VALUE="0.005" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:33" SYNCSTR="2015/05/21 13:59:33"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4224975" EXCH_BRD_PS_OID="4224972" PRICE_FROM="0.1"
-                                           PRICE_TO="0.5" SPREAD_VALUE="0.01" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:33" SYNCSTR="2015/05/21 13:59:33"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4224976" EXCH_BRD_PS_OID="4224972" PRICE_FROM="0.5"
-                                           PRICE_TO="1" SPREAD_VALUE="0.025" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:33" SYNCSTR="2015/05/21 13:59:33"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4224977" EXCH_BRD_PS_OID="4224972" PRICE_FROM="1"
-                                           PRICE_TO="5" SPREAD_VALUE="0.05" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:33" SYNCSTR="2015/05/21 13:59:33"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4224978" EXCH_BRD_PS_OID="4224972" PRICE_FROM="5"
-                                           PRICE_TO="10" SPREAD_VALUE="0.1" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:33" SYNCSTR="2015/05/21 13:59:33"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4224979" EXCH_BRD_PS_OID="4224972" PRICE_FROM="10"
-                                           PRICE_TO="100" SPREAD_VALUE="0.25" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:33" SYNCSTR="2015/05/21 13:59:33"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4224980" EXCH_BRD_PS_OID="4224972" PRICE_FROM="100"
-                                           PRICE_TO="200" SPREAD_VALUE="0.5" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:33" SYNCSTR="2015/05/21 13:59:33"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4224981" EXCH_BRD_PS_OID="4224972" PRICE_FROM="200"
-                                           PRICE_TO="500" SPREAD_VALUE="1" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:33" SYNCSTR="2015/05/21 13:59:33"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4224982" EXCH_BRD_PS_OID="4224972" PRICE_FROM="500"
-                                           PRICE_TO="1000" SPREAD_VALUE="2" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:33" SYNCSTR="2015/05/21 13:59:33"
-                                           STATUS="A" VERSION="1"/>
-            </EXCH_BRD_PRICE_SPREAD>
             <EXCH_BRD_PRICE_SPREAD EXCH_BRD_PS_OID="4459615" EXCH_BRD_OID="280008" EXCH_BRD_PS_CODE="1"
                                    LAST_MOD_USER="PPAK" LAST_MOD_TIMESTAMP="2015/05/27 15:22:27"
                                    SYNCSTR="2015/05/27 15:22:27" STATUS="A" VERSION="1">
@@ -1350,145 +1210,93 @@
                                            LAST_MOD_TIMESTAMP="2015/05/27 15:22:27" SYNCSTR="2015/05/27 15:22:27"
                                            STATUS="A" VERSION="1"/>
             </EXCH_BRD_PRICE_SPREAD>
-            <EXCH_BRD_PRICE_SPREAD EXCH_BRD_PS_OID="4181373" EXCH_BRD_OID="2028025" EXCH_BRD_PS_CODE="1"
-                                   LAST_MOD_USER="AMS" LAST_MOD_TIMESTAMP="2015/06/25 15:27:46"
-                                   SYNCSTR="2015/06/25 15:27:46" STATUS="A" VERSION="2">
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483344" EXCH_BRD_PS_OID="4181373" PRICE_FROM="0.001"
-                                           PRICE_TO="0.01" SPREAD_VALUE="0.001" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:46" SYNCSTR="2015/06/25 15:27:46"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483345" EXCH_BRD_PS_OID="4181373" PRICE_FROM="0.01"
-                                           PRICE_TO="0.1" SPREAD_VALUE="0.005" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:46" SYNCSTR="2015/06/25 15:27:46"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483346" EXCH_BRD_PS_OID="4181373" PRICE_FROM="0.1"
-                                           PRICE_TO="0.5" SPREAD_VALUE="0.01" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:46" SYNCSTR="2015/06/25 15:27:46"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483347" EXCH_BRD_PS_OID="4181373" PRICE_FROM="0.5"
-                                           PRICE_TO="1" SPREAD_VALUE="0.025" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:46" SYNCSTR="2015/06/25 15:27:46"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483348" EXCH_BRD_PS_OID="4181373" PRICE_FROM="1"
-                                           PRICE_TO="5" SPREAD_VALUE="0.05" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:46" SYNCSTR="2015/06/25 15:27:46"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483349" EXCH_BRD_PS_OID="4181373" PRICE_FROM="5"
-                                           PRICE_TO="10" SPREAD_VALUE="0.1" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:46" SYNCSTR="2015/06/25 15:27:46"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483350" EXCH_BRD_PS_OID="4181373" PRICE_FROM="10"
-                                           PRICE_TO="100" SPREAD_VALUE="0.25" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:46" SYNCSTR="2015/06/25 15:27:46"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483351" EXCH_BRD_PS_OID="4181373" PRICE_FROM="100"
-                                           PRICE_TO="200" SPREAD_VALUE="0.5" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:46" SYNCSTR="2015/06/25 15:27:46"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483352" EXCH_BRD_PS_OID="4181373" PRICE_FROM="200"
-                                           PRICE_TO="500" SPREAD_VALUE="1" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:46" SYNCSTR="2015/06/25 15:27:46"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483353" EXCH_BRD_PS_OID="4181373" PRICE_FROM="500"
-                                           PRICE_TO="1000" SPREAD_VALUE="2" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:46" SYNCSTR="2015/06/25 15:27:46"
-                                           STATUS="A" VERSION="1"/>
+            <EXCH_BRD_PRICE_SPREAD EXCH_BRD_OID="2028025" EXCH_BRD_PS_CODE="2" EXCH_BRD_PS_OID="4483173"
+                                   LAST_MOD_TIMESTAMP="2015/06/25 15:27:45" LAST_MOD_USER="AMS" STATUS="A"
+                                   SYNCSTR="2015/06/25 15:27:45" VERSION="1">
+                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483174" EXCH_BRD_PS_OID="4483173"
+                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:45" LAST_MOD_USER="AMS"
+                                           PRICE_FROM="0.001" PRICE_TO="0.01" SPREAD_VALUE="0.001" STATUS="A"
+                                           SYNCSTR="2015/06/25 15:27:45" VERSION="1"/>
+                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483175" EXCH_BRD_PS_OID="4483173"
+                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:45" LAST_MOD_USER="AMS"
+                                           PRICE_FROM="0.01" PRICE_TO="0.1" SPREAD_VALUE="0.005" STATUS="A"
+                                           SYNCSTR="2015/06/25 15:27:45" VERSION="1"/>
+                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483176" EXCH_BRD_PS_OID="4483173"
+                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:45" LAST_MOD_USER="AMS" PRICE_FROM="0.1"
+                                           PRICE_TO="0.5" SPREAD_VALUE="0.01" STATUS="A" SYNCSTR="2015/06/25 15:27:45"
+                                           VERSION="1"/>
+                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483177" EXCH_BRD_PS_OID="4483173"
+                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:45" LAST_MOD_USER="AMS" PRICE_FROM="0.5"
+                                           PRICE_TO="1" SPREAD_VALUE="0.025" STATUS="A" SYNCSTR="2015/06/25 15:27:45"
+                                           VERSION="1"/>
+                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483178" EXCH_BRD_PS_OID="4483173"
+                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:45" LAST_MOD_USER="AMS" PRICE_FROM="1"
+                                           PRICE_TO="5" SPREAD_VALUE="0.05" STATUS="A" SYNCSTR="2015/06/25 15:27:45"
+                                           VERSION="1"/>
+                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483179" EXCH_BRD_PS_OID="4483173"
+                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:45" LAST_MOD_USER="AMS" PRICE_FROM="5"
+                                           PRICE_TO="10" SPREAD_VALUE="0.1" STATUS="A" SYNCSTR="2015/06/25 15:27:45"
+                                           VERSION="1"/>
+                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483180" EXCH_BRD_PS_OID="4483173"
+                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:45" LAST_MOD_USER="AMS" PRICE_FROM="10"
+                                           PRICE_TO="100" SPREAD_VALUE="0.25" STATUS="A" SYNCSTR="2015/06/25 15:27:45"
+                                           VERSION="1"/>
+                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483181" EXCH_BRD_PS_OID="4483173"
+                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:45" LAST_MOD_USER="AMS" PRICE_FROM="100"
+                                           PRICE_TO="200" SPREAD_VALUE="0.5" STATUS="A" SYNCSTR="2015/06/25 15:27:45"
+                                           VERSION="1"/>
+                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483182" EXCH_BRD_PS_OID="4483173"
+                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:45" LAST_MOD_USER="AMS" PRICE_FROM="200"
+                                           PRICE_TO="500" SPREAD_VALUE="1" STATUS="A" SYNCSTR="2015/06/25 15:27:45"
+                                           VERSION="1"/>
+                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483183" EXCH_BRD_PS_OID="4483173"
+                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:45" LAST_MOD_USER="AMS" PRICE_FROM="500"
+                                           PRICE_TO="1000" SPREAD_VALUE="2" STATUS="A" SYNCSTR="2015/06/25 15:27:45"
+                                           VERSION="1"/>
             </EXCH_BRD_PRICE_SPREAD>
-            <EXCH_BRD_PRICE_SPREAD EXCH_BRD_PS_OID="4224801" EXCH_BRD_OID="2028023" EXCH_BRD_PS_CODE="2"
-                                   LAST_MOD_USER="AMS" LAST_MOD_TIMESTAMP="2015/05/21 13:59:29"
-                                   SYNCSTR="2015/05/21 13:59:29" STATUS="A" VERSION="1">
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4224802" EXCH_BRD_PS_OID="4224801" PRICE_FROM="0.001"
-                                           PRICE_TO="0.01" SPREAD_VALUE="0.001" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:29" SYNCSTR="2015/05/21 13:59:29"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4224803" EXCH_BRD_PS_OID="4224801" PRICE_FROM="0.01"
-                                           PRICE_TO="0.1" SPREAD_VALUE="0.005" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:29" SYNCSTR="2015/05/21 13:59:29"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4224804" EXCH_BRD_PS_OID="4224801" PRICE_FROM="0.1"
-                                           PRICE_TO="0.5" SPREAD_VALUE="0.01" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:29" SYNCSTR="2015/05/21 13:59:29"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4224805" EXCH_BRD_PS_OID="4224801" PRICE_FROM="0.5"
-                                           PRICE_TO="1" SPREAD_VALUE="0.025" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:29" SYNCSTR="2015/05/21 13:59:29"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4224806" EXCH_BRD_PS_OID="4224801" PRICE_FROM="1"
-                                           PRICE_TO="5" SPREAD_VALUE="0.05" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:29" SYNCSTR="2015/05/21 13:59:29"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4224807" EXCH_BRD_PS_OID="4224801" PRICE_FROM="5"
-                                           PRICE_TO="10" SPREAD_VALUE="0.1" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:29" SYNCSTR="2015/05/21 13:59:29"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4224808" EXCH_BRD_PS_OID="4224801" PRICE_FROM="10"
-                                           PRICE_TO="100" SPREAD_VALUE="0.25" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:29" SYNCSTR="2015/05/21 13:59:29"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4224809" EXCH_BRD_PS_OID="4224801" PRICE_FROM="100"
-                                           PRICE_TO="200" SPREAD_VALUE="0.5" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:29" SYNCSTR="2015/05/21 13:59:29"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4224810" EXCH_BRD_PS_OID="4224801" PRICE_FROM="200"
-                                           PRICE_TO="500" SPREAD_VALUE="1" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:29" SYNCSTR="2015/05/21 13:59:29"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4224811" EXCH_BRD_PS_OID="4224801" PRICE_FROM="500"
-                                           PRICE_TO="1000" SPREAD_VALUE="2" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:29" SYNCSTR="2015/05/21 13:59:29"
-                                           STATUS="A" VERSION="1"/>
-            </EXCH_BRD_PRICE_SPREAD>
-            <EXCH_BRD_PRICE_SPREAD EXCH_BRD_PS_OID="4215705" EXCH_BRD_OID="2028024" EXCH_BRD_PS_CODE="1"
-                                   LAST_MOD_USER="AMS" LAST_MOD_TIMESTAMP="2015/05/21 13:59:59"
-                                   SYNCSTR="2015/05/21 13:59:59" STATUS="A" VERSION="2">
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4228186" EXCH_BRD_PS_OID="4215705" PRICE_FROM="0.001"
-                                           PRICE_TO="0.01" SPREAD_VALUE="0.001" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:59" SYNCSTR="2015/05/21 13:59:59"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4228187" EXCH_BRD_PS_OID="4215705" PRICE_FROM="0.01"
-                                           PRICE_TO="0.1" SPREAD_VALUE="0.005" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:59" SYNCSTR="2015/05/21 13:59:59"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4228188" EXCH_BRD_PS_OID="4215705" PRICE_FROM="0.1"
-                                           PRICE_TO="0.5" SPREAD_VALUE="0.01" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:59" SYNCSTR="2015/05/21 13:59:59"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4228189" EXCH_BRD_PS_OID="4215705" PRICE_FROM="0.5"
-                                           PRICE_TO="1" SPREAD_VALUE="0.025" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:59" SYNCSTR="2015/05/21 13:59:59"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4228190" EXCH_BRD_PS_OID="4215705" PRICE_FROM="1"
-                                           PRICE_TO="5" SPREAD_VALUE="0.05" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:59" SYNCSTR="2015/05/21 13:59:59"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4228191" EXCH_BRD_PS_OID="4215705" PRICE_FROM="5"
-                                           PRICE_TO="10" SPREAD_VALUE="0.1" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 13:59:59" SYNCSTR="2015/05/21 13:59:59"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4228192" EXCH_BRD_PS_OID="4215705" PRICE_FROM="10"
-                                           PRICE_TO="100" SPREAD_VALUE="0.25" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 14:00:00" SYNCSTR="2015/05/21 13:59:59"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4228193" EXCH_BRD_PS_OID="4215705" PRICE_FROM="100"
-                                           PRICE_TO="200" SPREAD_VALUE="0.5" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 14:00:00" SYNCSTR="2015/05/21 13:59:59"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4228194" EXCH_BRD_PS_OID="4215705" PRICE_FROM="200"
-                                           PRICE_TO="500" SPREAD_VALUE="1" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 14:00:00" SYNCSTR="2015/05/21 13:59:59"
-                                           STATUS="A" VERSION="1"/>
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4228195" EXCH_BRD_PS_OID="4215705" PRICE_FROM="500"
-                                           PRICE_TO="1000" SPREAD_VALUE="2" LAST_MOD_USER="AMS"
-                                           LAST_MOD_TIMESTAMP="2015/05/21 14:00:00" SYNCSTR="2015/05/21 13:59:59"
-                                           STATUS="A" VERSION="1"/>
-            </EXCH_BRD_PRICE_SPREAD>
-            <EXCH_BRD_PRICE_SPREAD EXCH_BRD_PS_OID="4181475" EXCH_BRD_OID="2496028" EXCH_BRD_PS_CODE="1"
-                                   LAST_MOD_USER="PPAK" LAST_MOD_TIMESTAMP="2015/03/05 10:25:21"
-                                   SYNCSTR="2015/03/05 10:25:21" STATUS="A" VERSION="1">
-                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4181476" EXCH_BRD_PS_OID="4181475" PRICE_FROM="0.1"
-                                           PRICE_TO="9999" SPREAD_VALUE="0.01" LAST_MOD_USER="PPAK"
-                                           LAST_MOD_TIMESTAMP="2015/03/05 10:25:21" SYNCSTR="2015/03/05 10:25:21"
-                                           STATUS="A" VERSION="1"/>
+            <EXCH_BRD_PRICE_SPREAD EXCH_BRD_OID="2028025" EXCH_BRD_PS_CODE="1" EXCH_BRD_PS_OID="4181373"
+                                   LAST_MOD_TIMESTAMP="2015/06/25 15:27:46" LAST_MOD_USER="AMS" STATUS="A"
+                                   SYNCSTR="2015/06/25 15:27:46" VERSION="2">
+                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483344" EXCH_BRD_PS_OID="4181373"
+                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:46" LAST_MOD_USER="AMS"
+                                           PRICE_FROM="0.001" PRICE_TO="0.01" SPREAD_VALUE="0.001" STATUS="A"
+                                           SYNCSTR="2015/06/25 15:27:46" VERSION="1"/>
+                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483345" EXCH_BRD_PS_OID="4181373"
+                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:46" LAST_MOD_USER="AMS"
+                                           PRICE_FROM="0.01" PRICE_TO="0.1" SPREAD_VALUE="0.005" STATUS="A"
+                                           SYNCSTR="2015/06/25 15:27:46" VERSION="1"/>
+                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483346" EXCH_BRD_PS_OID="4181373"
+                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:46" LAST_MOD_USER="AMS" PRICE_FROM="0.1"
+                                           PRICE_TO="0.5" SPREAD_VALUE="0.01" STATUS="A" SYNCSTR="2015/06/25 15:27:46"
+                                           VERSION="1"/>
+                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483347" EXCH_BRD_PS_OID="4181373"
+                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:46" LAST_MOD_USER="AMS" PRICE_FROM="0.5"
+                                           PRICE_TO="1" SPREAD_VALUE="0.025" STATUS="A" SYNCSTR="2015/06/25 15:27:46"
+                                           VERSION="1"/>
+                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483348" EXCH_BRD_PS_OID="4181373"
+                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:46" LAST_MOD_USER="AMS" PRICE_FROM="1"
+                                           PRICE_TO="5" SPREAD_VALUE="0.05" STATUS="A" SYNCSTR="2015/06/25 15:27:46"
+                                           VERSION="1"/>
+                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483349" EXCH_BRD_PS_OID="4181373"
+                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:46" LAST_MOD_USER="AMS" PRICE_FROM="5"
+                                           PRICE_TO="10" SPREAD_VALUE="0.1" STATUS="A" SYNCSTR="2015/06/25 15:27:46"
+                                           VERSION="1"/>
+                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483350" EXCH_BRD_PS_OID="4181373"
+                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:46" LAST_MOD_USER="AMS" PRICE_FROM="10"
+                                           PRICE_TO="100" SPREAD_VALUE="0.25" STATUS="A" SYNCSTR="2015/06/25 15:27:46"
+                                           VERSION="1"/>
+                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483351" EXCH_BRD_PS_OID="4181373"
+                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:46" LAST_MOD_USER="AMS" PRICE_FROM="100"
+                                           PRICE_TO="200" SPREAD_VALUE="0.5" STATUS="A" SYNCSTR="2015/06/25 15:27:46"
+                                           VERSION="1"/>
+                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483352" EXCH_BRD_PS_OID="4181373"
+                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:46" LAST_MOD_USER="AMS" PRICE_FROM="200"
+                                           PRICE_TO="500" SPREAD_VALUE="1" STATUS="A" SYNCSTR="2015/06/25 15:27:46"
+                                           VERSION="1"/>
+                <EXCH_BRD_PRICE_SPREAD_DTL EXCH_BRD_PS_DTL_OID="4483353" EXCH_BRD_PS_OID="4181373"
+                                           LAST_MOD_TIMESTAMP="2015/06/25 15:27:46" LAST_MOD_USER="AMS" PRICE_FROM="500"
+                                           PRICE_TO="1000" SPREAD_VALUE="2" STATUS="A" SYNCSTR="2015/06/25 15:27:46"
+                                           VERSION="1"/>
             </EXCH_BRD_PRICE_SPREAD>
         </DO-DATA>
     </BODY>

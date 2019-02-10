@@ -5,13 +5,13 @@ import com.exiasoft.itsmarketdata.dto.PriceQuoteDto
 import com.exiasoft.itsmarketdata.model.PriceQuote
 import com.exiasoft.itsstaticdata.service.CurrencyService
 import com.exiasoft.itsstaticdata.service.ExchangeBoardService
-import com.exiasoft.itsstaticdata.service.ExchangeService
+import com.exiasoft.itsstaticdata.service.SimpleExchangeService
 import org.springframework.beans.BeanUtils
 import org.springframework.stereotype.Component
 import reactor.core.publisher.Mono
 
 @Component
-class PriceQuoteMapper(val currencyService: CurrencyService, val exchangeService: ExchangeService, val exchangeBoardService: ExchangeBoardService) {
+class PriceQuoteMapper(val currencyService: CurrencyService, val exchangeService: SimpleExchangeService, val exchangeBoardService: ExchangeBoardService) {
 
     fun modelToDto(authenToken: AuthenticationToken, priceQuote: Mono<PriceQuote>): Mono<PriceQuoteDto> {
         return priceQuote.flatMap { pq ->

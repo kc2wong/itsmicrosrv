@@ -7,8 +7,10 @@ import com.exiasoft.itscommon.resource.BaseResource
 import com.exiasoft.itscommon.util.WebResponseUtil
 import com.exiasoft.itsstaticdata.CONTEXT_PATH
 import com.exiasoft.itsstaticdata.CONTEXT_PATH_INTERNAL
+import com.exiasoft.itsstaticdata.dto.ExchangeDto
 import com.exiasoft.itsstaticdata.dto.SimpleExchangeDto
 import com.exiasoft.itsstaticdata.mapper.ExchangeMapper
+import com.exiasoft.itsstaticdata.model.Exchange
 import com.exiasoft.itsstaticdata.model.SimpleExchange
 import com.exiasoft.itsstaticdata.service.ExchangeService
 import mu.KotlinLogging
@@ -34,7 +36,7 @@ class ExchangeController(
              @PageableDefault(sort = ["exchangeCode,asc"]) pageable: Pageable,
              authenToken: AuthenticationToken,
              request: ServerHttpRequest
-    ): Mono<ResponseEntity<PagingSearchResult<SimpleExchangeDto>>> {
+    ): Mono<ResponseEntity<PagingSearchResult<ExchangeDto>>> {
         logger.debug("REST request to get a page of Exchanges")
         val page = exchangeService.find(authenToken, nameDefLang, pageable)
         logger.info("Exchange page retrieved, result = {} ", page)
@@ -47,11 +49,11 @@ class ExchangeController(
     fun findOne(@PathVariable exchangeCode: String,
                 authenToken: AuthenticationToken,
                 httpServletRequest: ServerHttpRequest
-    ): Mono<ResponseEntity<SimpleExchangeDto>> {
+    ): Mono<ResponseEntity<ExchangeDto>> {
         logger.debug("REST request to get a exchange, exchangeCode = {}", exchangeCode)
         val exchange = exchangeService.findByIdentifier(authenToken, exchangeCode)
         logger.info("Exchange retrieved, result = {} ", exchange)
-        return WebResponseUtil.wrapOrNotFound(exchangeMapper.modelToDto(authenToken, exchange, null))
+        return WebResponseUtil.wrapOrNotFound(exchangeMapper.modelToDto(authenToken, exchange))
     }
 
 }
@@ -69,7 +71,7 @@ class ExchangeIntController(
     fun findByOid(@PathVariable oid: String,
                   authenToken: AuthenticationToken,
                   request: ServerHttpRequest
-    ): Mono<SimpleExchange> {
+    ): Mono<Exchange> {
         return exchangeService.findByOid(authenToken, oid)
     }
 
@@ -78,7 +80,7 @@ class ExchangeIntController(
              @PageableDefault(sort = ["exchangeOid,asc"]) pageable: Pageable,
              authenToken: AuthenticationToken,
              request: ServerHttpRequest
-    ): Mono<PagingSearchResult<SimpleExchange>> {
+    ): Mono<PagingSearchResult<Exchange>> {
         return exchangeService.find(authenToken, nameDefLang, pageable).map {
             WebResponseUtil.generatePaginationResponse(it, it.content)
         }
@@ -89,7 +91,7 @@ class ExchangeIntController(
                    @PageableDefault(sort = ["exchangeOid,asc"]) pageable: Pageable,
                    authenToken: AuthenticationToken,
                    request: ServerHttpRequest
-    ): Mono<Map<String, SimpleExchange>> {
+    ): Mono<Map<String, Exchange>> {
         return exchangeService.findByOids(authenToken, oids)
     }
 

@@ -5,7 +5,9 @@ import com.exiasoft.itscommon.authen.AuthenticationToken
 import com.exiasoft.itscommon.authen.TokenProvider
 import com.exiasoft.itscommon.bean.XStreamProvider
 import com.exiasoft.itscommon.service.server.demo.BaseDemoServiceImpl
-import com.exiasoft.itsstaticdata.model.SimpleExchange
+import com.exiasoft.itsstaticdata.model.Exchange
+import com.exiasoft.itsstaticdata.model.ExchangeOrderType
+import com.exiasoft.itsstaticdata.model.ExchangeParameter
 import com.exiasoft.itsstaticdata.service.ExchangeService
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
@@ -17,21 +19,21 @@ import reactor.core.publisher.Mono
 class ExchangeServiceDemoImpl(
         tokenProvider: TokenProvider,
         xStreamProvider: XStreamProvider
-) : BaseDemoServiceImpl<String, SimpleExchange>(tokenProvider, xStreamProvider, SimpleExchange::class.java), ExchangeService {
+) : BaseDemoServiceImpl<String, Exchange>(tokenProvider, xStreamProvider, Exchange::class.java, listOf(ExchangeParameter::class.java, ExchangeOrderType::class.java)), ExchangeService {
 
     override fun getResourceName(): String {
         return "/service/demo/exchange.xml"
     }
 
-    override fun isEqualsInIdentifier(id: String, obj: SimpleExchange): Boolean {
+    override fun isEqualsInIdentifier(id: String, obj: Exchange): Boolean {
         return id == obj.exchangeCode
     }
 
-    override fun getOid(obj: SimpleExchange): String {
+    override fun getOid(obj: Exchange): String {
         return obj.exchangeOid
     }
 
-    override fun find(authenToken: AuthenticationToken, nameDefLang: String?, pageable: Pageable): Mono<Page<SimpleExchange>> {
+    override fun find(authenToken: AuthenticationToken, nameDefLang: String?, pageable: Pageable): Mono<Page<Exchange>> {
         var result = data.asSequence().toList()
         result = nameDefLang?.let { result.filter { e -> e.nameDefLang.contains(it, true) }} ?: result
         result = result.sortedWith(createComparator(pageable))

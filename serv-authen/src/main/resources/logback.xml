@@ -7,16 +7,16 @@
               value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
 
     <!--<appender name="GELF" class="de.siegmar.logbackgelf.GelfUdpAppender">-->
-        <!--<graylogHost>192.168.11.37</graylogHost>-->
-        <!--<graylogPort>12201</graylogPort>-->
-        <!--<layout class="de.siegmar.logbackgelf.GelfLayout">-->
-            <!--<shortPatternLayout class="ch.qos.logback.classic.PatternLayout">-->
-                <!--<pattern>${SLEUTH_PATTERN}</pattern>-->
-            <!--</shortPatternLayout>-->
-            <!--<fullPatternLayout class="ch.qos.logback.classic.PatternLayout">-->
-                <!--<pattern>${SLEUTH_PATTERN}</pattern>-->
-            <!--</fullPatternLayout>-->
-        <!--</layout>-->
+    <!--<graylogHost>192.168.11.37</graylogHost>-->
+    <!--<graylogPort>12201</graylogPort>-->
+    <!--<layout class="de.siegmar.logbackgelf.GelfLayout">-->
+    <!--<shortPatternLayout class="ch.qos.logback.classic.PatternLayout">-->
+    <!--<pattern>${SLEUTH_PATTERN}</pattern>-->
+    <!--</shortPatternLayout>-->
+    <!--<fullPatternLayout class="ch.qos.logback.classic.PatternLayout">-->
+    <!--<pattern>${SLEUTH_PATTERN}</pattern>-->
+    <!--</fullPatternLayout>-->
+    <!--</layout>-->
     <!--</appender>-->
 
     <!-- Appender to log to console -->
@@ -35,4 +35,9 @@
         <!--<appender-ref ref="GELF" />-->
         <appender-ref ref="CONSOLE" />
     </root>
+
+    <logger name="com.exiasoft" level="DEBUG" additivity="false">
+        <appender-ref ref="CONSOLE" />
+    </logger>
+
 </configuration>

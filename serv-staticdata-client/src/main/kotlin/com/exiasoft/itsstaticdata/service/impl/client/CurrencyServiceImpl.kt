@@ -19,9 +19,10 @@ class CurrencyServiceImpl(appName: String, loadBalancingClient: LoadBalancerClie
         uriBuilder.queryParam("currencyCode", id)
     }
 
-    override fun find(authenToken: AuthenticationToken, descptDefLang: String?, pageable: Pageable): Mono<Page<Currency>> {
+    override fun find(authenToken: AuthenticationToken, currencyCode: String?, descptDefLang: String?, pageable: Pageable): Mono<Page<Currency>> {
         return super.find(authenToken, pageable) { builder ->
-            descptDefLang?.let { builder.queryParam("currencyName", it) }
+            currencyCode?.let { builder.queryParam("currencyCode", it) }
+            descptDefLang?.let { builder.queryParam("descptDefLang", it) }
         }
     }
 }

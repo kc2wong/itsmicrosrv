@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
 import org.springframework.web.reactive.BindingContext
+import org.springframework.web.reactive.config.CorsRegistry
 import org.springframework.web.reactive.config.WebFluxConfigurer
 import org.springframework.web.reactive.result.method.HandlerMethodArgumentResolver
 import org.springframework.web.reactive.result.method.annotation.ArgumentResolverConfigurer
@@ -17,7 +18,7 @@ import reactor.core.publisher.Mono
 
 @Configuration
 @ConditionalOnClass(WebFluxConfigurer::class)
-open class ArgumentResolverConfiguration(
+open class WebFluxConfiguration(
         @Value("\${its.page.size:50}") val pageSize: Int,
         @Value("\${its.page.max.size:32767}") val pageMaxSize: Int
 ) : WebFluxConfigurer {
