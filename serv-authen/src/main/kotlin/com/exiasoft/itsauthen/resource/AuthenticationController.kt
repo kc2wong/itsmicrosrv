@@ -99,8 +99,19 @@ class AuthenticationController(
         }
     }
 
-    private fun getInetAddress(httpRequest: ServerHttpRequest): InetAddress {
-        return httpRequest.remoteAddress?.let { it.address} ?: InetAddress.getLocalHost()
+    private fun getInetAddress(request: ServerHttpRequest): InetAddress {
+        // Get from follow sequence
+        // 1. Header  2. Request  3. Local Host
+        val rtn = request.headers["X-Forwarded-For"]?.let {
+            if (!it.isEmpty()) InetAddress.getByName(it.first()) else null
+        } ?: request.remoteAddress?.let { it.address }
+        return if (rtn == null) {
+            logger.warn("Cannot get ipaddress, use localhost as default")
+            InetAddress.getLocalHost()
+        }
+        else {
+            rtn
+        }
     }
 
     private fun getDecodedJwt(jwt: String): Map<String, Any> {
@@ -194,9 +205,10 @@ class AuthenticationIntController(
     private val logger = KotlinLogging.logger {}
 
     @PostMapping("/papi/authen-token")
-    fun createToken(@RequestBody content: Map<String, String>
+    fun createToken(@RequestBody content: Map<String, String>,
+                    request: ServerHttpRequest
     ): Mono<String> {
-        logger.info ( "AuthenticationIntController.authenticate() - starts" )
+        logger.info("AuthenticationIntController.authenticate() - starts")
         val lifeTime = applicationProperties.jwtTokenValidityInSeconds
         val token = tokenProvider.createToken(UsernamePasswordAuthenticationToken(content["userid"] ?: "", ""),
                 functionListConfig.list.toSet(), emptyMap(), 1000L * lifeTime)
