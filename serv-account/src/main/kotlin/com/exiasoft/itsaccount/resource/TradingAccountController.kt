@@ -17,6 +17,7 @@ import com.exiasoft.itscommon.util.WebResponseUtil
 import com.exiasoft.itsstaticdata.service.CurrencyService
 import com.exiasoft.itsstaticdata.service.SimpleExchangeService
 import mu.KotlinLogging
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient
 import org.springframework.data.domain.Pageable
 import org.springframework.http.MediaType
@@ -37,6 +38,7 @@ class TradingAccountController(
         val portfolioEnquiryService: PortfolioEnquiryService,
         val tradingAccountMapper: TradingAccountMapper,
         val portfolioMapper: AccountPortfolioMapper,
+        @Value("\${itsstaticdata.application.name}") val itsstaticdataAppName: String,
         loadBalancingClient: LoadBalancerClient,
         webClientBuilder: WebClient.Builder
 ): BaseExperienceApiResource(loadBalancingClient, webClientBuilder) {
@@ -73,7 +75,7 @@ class TradingAccountController(
                 val requestParams = it.content.map {
                     mapOf("exchangeCode" to it.exchangeCode, "instrumentCode" to instrumentCodeMap[it.exchangeOid]!!.joinToString(","))
                 }.toList()
-                consumeResourceAndCollect(authenToken, "itsstaticdata", "/staticdata/v1/sapi/instruments", requestParams).flatMap { extResource ->
+                consumeResourceAndCollect(authenToken, itsstaticdataAppName, "/staticdata/v1/sapi/instruments", requestParams).flatMap { extResource ->
                     val portfolio = portfolioMapper.modelToDto(authenToken, acctPortfolio) { AccountPortfolioBundle(it, extResource.asSequence().toList())}
                     WebResponseUtil.wrapOrNotFound(portfolio!!)
                 }

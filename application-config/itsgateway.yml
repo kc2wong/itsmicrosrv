@@ -12,6 +12,20 @@ spring:
       discovery:
         locator:
           enabled: true      
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            exposedHeaders:
+              - "Authorization"
+              - "X-Forwarded-For"
+              - "X-its-alert"
+              - "X-its-alertParam"
+              - "X-its-rptFile"
+              - "X-its-errorCode"
+              - "X-its-errorParam"          
       routes:
       - id: itsaccount
         uri: lb://itsaccount

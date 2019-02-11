@@ -16,6 +16,7 @@ import com.exiasoft.itsorder.mapper.OrderMapper
 import com.exiasoft.itsorder.service.OrderService
 import com.exiasoft.itsorder.service.SimpleOrderService
 import mu.KotlinLogging
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient
 import org.springframework.data.domain.Pageable
 import org.springframework.format.annotation.DateTimeFormat
@@ -35,6 +36,7 @@ class OrderController(
         val orderMapper: OrderMapper,
         val orderInputRequestMapper: OrderInputRequestMapper,
         val chargeCommissionMapper: ChargeCommissionMapper,
+        @Value("\${itsstaticdata.application.name}") val itsstaticdataAppName: String,
         loadBalancingClient: LoadBalancerClient,
         webClientBuilder: WebClient.Builder
 ): BaseExperienceApiResource(loadBalancingClient, webClientBuilder) {
@@ -61,7 +63,7 @@ class OrderController(
             val requestParams = instrumentCodeMap.map {
                 mapOf("exchangeCode" to it.key, "instrumentCode" to it.value.joinToString(","))
             }.toList()
-            consumeResourceAndCollect(authenToken, "itsstaticdata", "/staticdata/v1/sapi/instruments", requestParams).flatMap { extResource ->
+            consumeResourceAndCollect(authenToken, itsstaticdataAppName, "/staticdata/v1/sapi/instruments", requestParams).flatMap { extResource ->
                 WebResponseUtil.generatePaginationResponseEntity(request.path.toString(), page, mapOf("instruments" to extResource)) { v -> orderMapper.simpleModelToDto(authenToken, v) }
             }
         }

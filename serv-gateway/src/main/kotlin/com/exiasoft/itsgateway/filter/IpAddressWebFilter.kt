@@ -1,4 +1,4 @@
-package com.exiasoft.itsgateway.config
+package com.exiasoft.itsgateway.filter
 
 import mu.KotlinLogging
 import org.springframework.stereotype.Component
