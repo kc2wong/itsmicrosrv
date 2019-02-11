@@ -1,10 +1,3 @@
-cors:
-  allowed-origins: "*"
-  allowed-methods: "*"
-  allowed-headers: "*"
-  exposed-headers: "REMOTE_ADDR, Authorization, X-itsmicrosrv-alert, X-itsmicrosrv-alertParam, X-itsmicrosrv-rptFile, X-itsmicrosrv-errorCode, X-itsmicrosrv-errorParam"
-  allow-credentials: true
-  max-age: 1800
 its:
   page:
     max:
@@ -13,6 +6,9 @@ its:
 itsauthen:
   application:
     name: itsauthen
+itsstaticdata:
+  application:
+    name: itsstaticdata
 jwt:
   secret: my-secret-token-to-change-in-production
   token-validity-in-seconds: 86500
