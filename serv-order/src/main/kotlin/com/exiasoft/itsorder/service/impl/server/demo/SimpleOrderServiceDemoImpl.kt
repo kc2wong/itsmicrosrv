@@ -11,9 +11,11 @@ import com.exiasoft.itsorder.model.SimpleOrder
 import com.exiasoft.itsorder.model.SimpleOrderData
 import com.exiasoft.itsorder.model.enumeration.OrderStatus
 import com.exiasoft.itsorder.service.SimpleOrderService
+import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageImpl
 import org.springframework.data.domain.Pageable
+import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
 import java.time.LocalDate
@@ -24,8 +26,6 @@ class SimpleOrderServiceDemoImpl (
         xStreamProvider: XStreamProvider,
         val dataEntitlementService: DataEntitlementService
 ) : BaseSimpleObjectDemoServiceImpl<String, SimpleOrder, SimpleOrderData>(tokenProvider, xStreamProvider, SimpleOrderData::class.java), SimpleOrderService {
-
-//    val delegate = SimpleOrderServiceDataDemoImpl(tokenProvider, xStreamProvider, dataEntitlementService)
 
     override fun getResourceName(): String {
         return "/service/demo/order.xml"
@@ -47,37 +47,9 @@ class SimpleOrderServiceDemoImpl (
         result = startTradeDate?.let { result.filter { e -> e.createTradeDate.compareTo(it) >= 0 } } ?: result
         result = endTradeDate?.let { result.filter { e -> e.createTradeDate.compareTo(it) <= 0 } } ?: result
         result = if (orderStatus.isNotEmpty()) result.filter { e -> orderStatus.contains(e.orderStatus) } else result
+        result = if (pageable != Pageable.unpaged()) result.sortedWith(createComparator(pageable)) else result
         return Mono.just(getPage(authenToken, result, pageable))
     }
 
-//    class SimpleOrderServiceDataDemoImpl (
-//            tokenProvider: TokenProvider,
-//            xStreamProvider: XStreamProvider,
-//            val dataEntitlementService: DataEntitlementService
-//    ) : BaseDemoServiceImpl<String, SimpleOrderData>(tokenProvider, xStreamProvider, SimpleOrderData::class.java) {
-//
-//        override fun getOid(obj: SimpleOrderData): String {
-//            return obj.orderOid
-//        }
-//
-//        override fun getResourceName(): String {
-//            return "/service/demo/order.xml"
-//        }
-//
-//        override fun isEqualsInIdentifier(id: String, obj: SimpleOrderData): Boolean {
-//            return id == obj.orderNumber
-//        }
-//
-//        @ItsFunction(["EnquiryGrp.Order.Enquiry"])
-//        fun enquireOrder(authenToken: AuthenticationToken, tradingAccountCode: String, exchangeCode: String?, startTradeDate: LocalDate?, endTradeDate: LocalDate?, orderStatus: Set<OrderStatus>, pageable: Pageable): Mono<Page<SimpleOrderData>> {
-//            var result = data.asSequence().toList()
-//            result = tradingAccountCode?.let { result.filter { e -> e.tradingAccountCode == it } } ?: result
-//            result = exchangeCode?.let { result.filter { e -> e.exchangeCode == it } } ?: result
-//            result = startTradeDate?.let { result.filter { e -> e.createTradeDate.compareTo(it) >= 0 } } ?: result
-//            result = endTradeDate?.let { result.filter { e -> e.createTradeDate.compareTo(it) <= 0 } } ?: result
-//            result = if (orderStatus.isNotEmpty()) result.filter { e -> orderStatus.contains(e.orderStatus) } else result
-//            return Mono.just(getPage(authenToken, result, pageable))
-//        }
-//    }
 }
 
