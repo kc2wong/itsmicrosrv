@@ -16,6 +16,7 @@ import com.exiasoft.itscommon.util.WebResponseUtil
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import mu.KotlinLogging
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -33,7 +34,8 @@ class AuthenticationController(
         val authenticationService: AuthenticationService,
         val userProfileService: UserProfileService,
         val tokenProvider: TokenProvider,
-        val applicationProperties: ApplicationConfig
+        @Value("\${companyCode}") val companyCode: String,
+        @Value("\${jwt.token-validity-in-seconds}") val jwtTokenValidityInSeconds: Long
 ) {
 
     private val logger = KotlinLogging.logger {}
@@ -43,7 +45,7 @@ class AuthenticationController(
         logger.info ( "AuthenticationController.login() starts " )
         val ipAddress = getInetAddress(httpRequest)
         logger.info ( "AuthenticationController.login(), ipAddress = {}", ipAddress )
-        val response = authenticationService.initiateLogin(applicationProperties.companyCode, loginChallenge.userid, ipAddress, true)
+        val response = authenticationService.initiateLogin(companyCode, loginChallenge.userid, ipAddress, true)
         return response.map {
             val itsAuthentication = ItsAuthentication(Credential(loginChallenge.userid, "", false))
             val claims = mapOf(
@@ -86,7 +88,7 @@ class AuthenticationController(
         return response.flatMap {
             val data = it.data
             val authentication = ItsAuthentication(Credential(userid, "", false))
-            val lifeTime = applicationProperties.jwtTokenValidityInSeconds
+            val lifeTime = jwtTokenValidityInSeconds
 
             val claims = mapOf("result" to (data["result"] ?: "fail"), "Set-Cookie" to authenRequest.jsessionId)
             val accessibleFunctions = userProfileService.getAccessibileFunctions(tokenProvider.createToken(authentication, null, claims, 1000L * lifeTime))
@@ -196,10 +198,10 @@ class AuthenticationController(
 @RequestMapping(CONTEXT_PATH_INTERNAL)
 class AuthenticationIntController(
         val tokenProvider: TokenProvider,
-        val applicationProperties: ApplicationConfig,
         val functionListConfig: FunctionListConfig,
         val userProfileService: UserProfileService,
-        val dataEntitlementService: DataEntitlementService
+        val dataEntitlementService: DataEntitlementService,
+        @Value("\${jwt.token-validity-in-seconds}") val jwtTokenValidityInSeconds: Long
 ) {
 
     private val logger = KotlinLogging.logger {}
@@ -209,13 +211,12 @@ class AuthenticationIntController(
                     request: ServerHttpRequest
     ): Mono<String> {
         logger.info("AuthenticationIntController.authenticate() - starts")
-        val lifeTime = applicationProperties.jwtTokenValidityInSeconds
         val token = tokenProvider.createToken(UsernamePasswordAuthenticationToken(content["userid"] ?: "", ""),
-                functionListConfig.list.toSet(), emptyMap(), 1000L * lifeTime)
+                functionListConfig.list.toSet(), emptyMap(), 1000L * jwtTokenValidityInSeconds)
         return userProfileService.getUserById(token, content["userid"] ?: "").map {
             val claims = mapOf("userOid" to it.userOid)
             tokenProvider.createToken(UsernamePasswordAuthenticationToken(content["userid"] ?: "", ""),
-                    functionListConfig.list.toSet(), claims, 1000L * lifeTime).idToken
+                    functionListConfig.list.toSet(), claims, 1000L * jwtTokenValidityInSeconds).idToken
         }.switchIfEmpty(Mono.just(token.idToken))
     }
 
