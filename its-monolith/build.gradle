@@ -1,0 +1,13 @@
+dependencies {
+	implementation("capital.scalable:spring-auto-restdocs-core:${springAutoRestDocsVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-security")
+
+	implementation project(':itscommon')
+	implementation project(':itsauthen-client')
+	implementation project(':itsauthen')
+	implementation project(':itsstaticdata')
+	implementation project(':itsorder')
+	implementation project(':itsaccount')
+	implementation project(':itsmarketdata')
+
+}

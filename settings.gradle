@@ -9,7 +9,7 @@
 
 rootProject.name = 'itsmicrosrv'
 include ":util-common", ":util-common-test", ":serv-discovery", ":serv-config", ":serv-authen-client", ":serv-authen", \
-":serv-gateway", ":serv-staticdata-client", ":serv-staticdata", ":serv-account", ":serv-order", ":serv-marketdata"
+":serv-gateway", ":serv-staticdata-client", ":serv-staticdata", ":serv-account", ":serv-order", ":serv-marketdata", ":its-monolith"
 
 project(":util-common").name = "itscommon"
 project(":util-common-test").name = "itscommon-test"
@@ -23,3 +23,4 @@ project(":serv-staticdata").name = "itsstaticdata"
 project(":serv-account").name = "itsaccount"
 project(":serv-order").name = "itsorder"
 project(":serv-marketdata").name = "itsmarketdata"
+project(":its-monolith").name = "itsmonolith"
