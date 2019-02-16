@@ -5,7 +5,7 @@ import com.exiasoft.itscommon.authen.TokenProvider
 import com.exiasoft.itscommon.test.TestUtil
 import com.exiasoft.itsstaticdata.config.ItsStaticDataTestConfig
 import com.exiasoft.itsstaticdata.model.SimpleExchange
-import com.exiasoft.itsstaticdata.service.ExchangeService
+import com.exiasoft.itsstaticdata.service.SimpleExchangeService
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -27,7 +27,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 class ExchangeServiceTest {
 
     @Autowired
-    lateinit var exchangeService: ExchangeService
+    lateinit var exchangeService: SimpleExchangeService
 
     @Autowired
     lateinit var tokenProvider: TokenProvider
@@ -48,26 +48,26 @@ class ExchangeServiceTest {
 		Assertions.assertNotNull(result)
         result?.let {
             Assertions.assertEquals(Short.MAX_VALUE.toInt(), it.size)
-            Assertions.assertEquals(3, it.content.size)
-            Assertions.assertEquals(3, it.totalElements)
+            Assertions.assertEquals(2, it.content.size)
+            Assertions.assertEquals(2, it.totalElements)
         }
 
         // pageSize = # of records
-        result = exchangeService.find(token, null, PageRequest.of(0, 3)).block()
-        Assertions.assertNotNull(result)
-        result?.let {
-            Assertions.assertEquals(3, it.size)
-            Assertions.assertEquals(3, it.content.size)
-            Assertions.assertEquals(3, it.totalElements)
-        }
-
-        // pageSize < # of records
         result = exchangeService.find(token, null, PageRequest.of(0, 2)).block()
         Assertions.assertNotNull(result)
         result?.let {
             Assertions.assertEquals(2, it.size)
             Assertions.assertEquals(2, it.content.size)
-            Assertions.assertEquals(3, it.totalElements)
+            Assertions.assertEquals(2, it.totalElements)
+        }
+
+        // pageSize < # of records
+        result = exchangeService.find(token, null, PageRequest.of(0, 1)).block()
+        Assertions.assertNotNull(result)
+        result?.let {
+            Assertions.assertEquals(1, it.size)
+            Assertions.assertEquals(1, it.content.size)
+            Assertions.assertEquals(2, it.totalElements)
         }
 
 

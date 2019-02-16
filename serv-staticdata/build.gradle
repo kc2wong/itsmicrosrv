@@ -1,8 +1,12 @@
+apply plugin: 'org.asciidoctor.convert'
+apply plugin: "org.jetbrains.dokka"
+
 dependencies {
-    implementation("capital.scalable:spring-auto-restdocs-core:${springAutoRestDocsVersion}")
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
     implementation("org.springframework.cloud:spring-cloud-starter-config")
     implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("capital.scalable:spring-auto-restdocs-core:${springAutoRestDocsVersion}")
+    implementation("org.springframework.restdocs:spring-restdocs-webtestclient:2.0.2.RELEASE")
 	implementation project(':itscommon')
 	implementation project(':itsauthen-client')
     implementation project(':itsstaticdata-client')
@@ -12,9 +16,34 @@ dependencies {
     runtime("org.springframework.cloud:spring-cloud-starter-sleuth:2.1.0.BUILD-SNAPSHOT")
     runtime("org.springframework.cloud:spring-cloud-sleuth-core:2.1.0.BUILD-SNAPSHOT")
     runtime("org.springframework.cloud:spring-cloud-starter-zipkin")
-    runtime('de.siegmar:logback-gelf:1.1.0')
+    runtime("de.siegmar:logback-gelf:1.1.0")
 
     // required by spring-auto-restdocs
     testImplementation('org.glassfish:javax.el:3.0.0')
     testImplementation project(':itscommon-test')
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.security:spring-security-test")
+}
+
+test {
+    dependsOn dokka
+    systemProperty "org.springframework.restdocs.outputDir", snippetsDir
+    systemProperty "org.springframework.restdocs.javadocJsonDir", javadocJsonDir
+}
+
+asciidoctor {
+    dependsOn test
+    inputs.dir snippetsDir
+    backends = ['html5']
+    attributes = [
+            defaultPageSize: '50',
+            doctype: 'book',
+            toc: 'left',
+            toclevels: '3',
+            numbered: '',
+            sectlinks: '',
+            sectanchors: '',
+            hardbreaks: '',
+            snippets: snippetsDir
+    ]
 }

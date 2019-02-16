@@ -68,7 +68,7 @@ class CurrencyServiceTest {
         }
 
         // Find by currency name
-        result = currencyService.find(token, "Hong Kong Dollar", PageRequest.of(0, Short.MAX_VALUE.toInt())).block()
+        result = currencyService.find(token, null, "Hong Kong Dollar", PageRequest.of(0, Short.MAX_VALUE.toInt())).block()
         Assertions.assertNotNull(result)
         Assertions.assertEquals(1, result!!.totalElements)
 

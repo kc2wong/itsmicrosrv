@@ -71,10 +71,10 @@ class TradingAccountController(
             // convert securities position to map of <ExchangeCode, List of Instrument Code>
             val instrumentCodeMap = acctPortfolio.securityPositionSummary.groupBy { it.exchangeOid }.mapValues { it.value.map { it.instrumentCode } }
             simpleExchangeService.findAll(authenToken, Pageable.unpaged()).flatMap {
-                // Consume get instrument API (once per Exchange) and merge the result with portfolio
+                // Consume get instrument API (once per Exchange with instrument in portfolio) and merge the result with portfolio
                 val requestParams = it.content.map {
-                    mapOf("exchangeCode" to it.exchangeCode, "instrumentCode" to instrumentCodeMap[it.exchangeOid]!!.joinToString(","))
-                }.toList()
+                    mapOf("exchangeCode" to it.exchangeCode, "instrumentCode" to (instrumentCodeMap[it.exchangeOid]?.let{it.joinToString(",")}  ?: "" ))
+                }.filter { it.values.isNotEmpty() }.toList()
                 consumeResourceAndCollect(authenToken, itsstaticdataAppName, "/staticdata/v1/sapi/instruments", requestParams).flatMap { extResource ->
                     val portfolio = portfolioMapper.modelToDto(authenToken, acctPortfolio) { AccountPortfolioBundle(it, extResource.asSequence().toList())}
                     WebResponseUtil.wrapOrNotFound(portfolio!!)

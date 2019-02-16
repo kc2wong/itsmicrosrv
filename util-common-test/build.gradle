@@ -23,6 +23,7 @@ dependencies {
     implementation project(':itscommon')
     implementation "org.springframework.restdocs:spring-restdocs-webtestclient:2.0.2.RELEASE"
     implementation "capital.scalable:spring-auto-restdocs-core:${springAutoRestDocsVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-security"
 }
 
 task sourcesJar(type: Jar) {

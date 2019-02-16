@@ -86,7 +86,7 @@ class ExchangeControllerTest {
                 .expectBody()
                 .jsonPath("$.currentPage").isEqualTo("0")
                 .jsonPath("$.totalPage").isEqualTo("1")
-                .jsonPath("$.totalCount").isEqualTo("2")
+                .jsonPath("$.totalCount").isEqualTo("1")
                 .consumeWith(pageResponseDoc(objectMapper, SimpleExchangeDto::class.java))
 
     }

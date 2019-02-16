@@ -2,7 +2,6 @@ package com.exiasoft.itsauthen.resource
 
 import com.exiasoft.itsauthen.CONTEXT_PATH
 import com.exiasoft.itsauthen.CONTEXT_PATH_INTERNAL
-import com.exiasoft.itsauthen.config.ApplicationConfig
 import com.exiasoft.itsauthen.config.FunctionListConfig
 import com.exiasoft.itsauthen.dto.Credential
 import com.exiasoft.itsauthen.model.security.DataEntitlement
