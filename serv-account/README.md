@@ -1,11 +1,11 @@
 # itsaccount
 
-itsstaticdata server component provides the following microservices (dummy data):
+itsaccount server component provides the following microservices (dummy data):
   - Trading accounts retrieval
     - Returns two accounts if login user is AD2923702 and none otherwise 
   - Portfolio retrieval
  
-itsaccount also consumes the internal APIs provided by itsauthen and itsstaticdata.  The implementation of the internal APIs accquires ip address and port number of the downstream services from itsdiscovery, sends http request to service provider and deserializes the result json back to Kotlin objects
+itsaccount also consumes the internal APIs provided by itsauthen and itsstaticdata.  The client implementation of the internal APIs acquires ip address and port number of the downstream services from itsdiscovery, sends http request to service provider and deserializes the result json back to Kotlin objects
 
 In addition, itsaccount also demonstrates the experience API pattern.  In portfolio enquiry page of the web application.  Normally it needs to consumes the following 2+ APIs in order to render the page:
 1. Retrieve the account portfolio from itsaccount
@@ -24,7 +24,7 @@ Experience API is implemented in resource controller but not defined in the serv
         logger.trace("TradingAccountController.getAccountPortfolio() starts, tradingAccountCode = ${tradingAccountCode} , currencyCode = ${currencyCode} ")
 
         return portfolioEnquiryService.findByIdentifier(authenToken, AccountPortfolio.AccountPortfolioId(tradingAccountCode, currencyCode)).flatMap { acctPortfolio ->
-            // convert securities position to map of <ExchangeCode, List of Instrument Code>
+            // convert securities position to map of <ExchangeOid, List of Instrument Code>
             val instrumentCodeMap = acctPortfolio.securityPositionSummary.groupBy { it.exchangeOid }.mapValues { it.value.map { it.instrumentCode } }
             simpleExchangeService.findAll(authenToken, Pageable.unpaged()).flatMap {
                 // Consume get instrument API (once per Exchange with instrument in portfolio) and merge the result with portfolio

@@ -50,7 +50,7 @@ Provides order retrieval functions. Experience API pattern is demonstrated
 
 Retrieved stock quotes from Yahoo Finance
 
-### [Its Monolith](https://github.com/kc2wong/itsmicrosrv/tree/master/itsmonolith)
+### [Its Monolith](https://github.com/kc2wong/itsmicrosrv/tree/master/its-monolith)
 
 Its Monolith is not a microservice.  In stead it combines all the microservices to form a monolithlic application
 
@@ -125,7 +125,7 @@ Refer to [itswebui](https://github.com/kc2wong/itswebui)
     - An internal api is to be consumed by other microservices within the same domain 
     - **service-name**/**int**/**version**/**api-category**/**resource-names**
   - Resource name should be noun in plural form, avoid using verbs if possible, e.g. /interest-calculation but not /calculate-interest
-  - In case verb is used, the resource should accept only one http method, e.g. if /calculate-interest is used, it should only be a http POST
+  - In case verb is used, the resource should accept only one http method, e.g. if /calculate-interest is used, it should only be a http POST only
   - Resource path and query parameters should not contain sensitive data in plain form, such as account number and name.  The value should be encrypted, see [Authentication Service](https://github.com/kc2wong/itsmicrosrv/tree/master/serv-authen) for more detail
 
 - Model
@@ -219,7 +219,7 @@ Spring Rest Docs and Spring Rest AutoDocs are used to generate API documentation
 $ gradlew itsstaticdata:asciidoctor
 ```
 
-Result will be generated in directory itsmicrosrv\serv-staticdata\build\asciidoc\html5.  Sample generated API documentation can be found in [here](https://github.com/kc2wong/itsmicrosrv/tree/master/serv-staticdata/doc/api/index.html)
+Result will be generated in directory itsmicrosrv\serv-staticdata\build\asciidoc\html5.  Sample generated API documentation can be found in [here](http://htmlpreview.github.io/?https://github.com/kc2wong/itsmicrosrv/blob/master/serv-staticdata/doc/api/index.html)
 
 Spring Rest Docs is handy for API documentation generation.  However, for enterprise with a lot of APIs built, it is always required to maintain a API inventory and therefore it is more desirable to generate documentation that meet specific standard, e.g. OpenAPI or RAML
 

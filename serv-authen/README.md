@@ -1,9 +1,9 @@
 # itsauthen
 
-itsauthen provides authentication service and data entitlement service.  It is divided in to [client](https://github.com/kc2wong/itsmicrosrv/tree/master/serv-authen-client) and server components
+itsauthen provides authentication service and data entitlement service.  It is divided into [client](https://github.com/kc2wong/itsmicrosrv/tree/master/serv-authen-client) and server components
 
 ### Client component
-When a microservice include itsauthen-client.jar in classpath, the following functions can be used
+When a microservice includes itsauthen-client.jar in classpath, the following functions can be used
 - An permission evaluator for other microservices to pre-author a restful APIs
   - E.g. in OrderResource.kt, @PreAuthorize("@permissionEvaluator.hasPermission(authentication, '{EnquiryGrp.Order.Enquiry}')")
   - The above annotation will check if the request is authorized with function 'EnquiryGrp.Order.Enquiry', error 401 will be returned if not authorized

@@ -12,5 +12,6 @@ itsgateway is the entry point of the system.  Generally a gateway serves the fol
 Multiple gateways can be setup for different channel, e.g. one for internet channel, one for mobile and one for staff channel
 
 itsgateway is built using spring cloud gateway.  After it starts up, it will fetch available microservices from discovery server and route the request to corresponding microservice based on uri pattern<br>
+
 The CORS and route setting are defined in the config file itsgateway.yml.  A web filter **IpAddressWebFilter** is created to append the Ip address of incoming request to X-Forwarded-For header
 
