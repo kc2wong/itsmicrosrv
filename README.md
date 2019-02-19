@@ -74,7 +74,7 @@ $ gradlew itsconfig:bootRun
 
 ## Wait until the above two service are started
 
-$ gradlew itsauten:bootRun
+$ gradlew itsauthen:bootRun
 $ gradlew itsstaticdata:bootRun
 $ gradlew itsaccount:bootRun
 $ gradlew itsorder:bootRun

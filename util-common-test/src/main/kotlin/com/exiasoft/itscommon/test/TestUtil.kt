@@ -35,8 +35,12 @@ class TestUtil {
     companion object {
 
         fun createToken(tokenProvider: TokenProvider, functionCodeList: List<String>) : AuthenticationToken {
+            return createToken(tokenProvider, "6000100303", functionCodeList)
+        }
+
+        fun createToken(tokenProvider: TokenProvider, userOid: String, functionCodeList: List<String>) : AuthenticationToken {
             return tokenProvider.createToken(UsernamePasswordAuthenticationToken("testuser", "", functionCodeList.map { GrantedAuthority { it } }),
-                    functionCodeList.toSet(), emptyMap(), 1000L * 60)
+                    functionCodeList.toSet(), mapOf("userOid" to userOid), 1000L * 60)
 
         }
 
