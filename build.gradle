@@ -4,6 +4,7 @@ buildscript {
         springBootVersion = '2.1.0.RELEASE'
         springAutoRestDocsVersion = '2.0.3'
         dokkaVersion = '0.9.17'
+        gradleDockerVersion = '1.2'
     }
     repositories {
         jcenter()
@@ -14,13 +15,12 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
         classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
 
-        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.9'
+        classpath("org.asciidoctor:asciidoctor-gradle-plugin:1.5.9")
         classpath("org.jetbrains.dokka:dokka-gradle-plugin:${dokkaVersion}")
+
+        classpath("se.transmode.gradle:gradle-docker:${gradleDockerVersion}")
     }
 }
-
-apply plugin: 'org.asciidoctor.convert'
-apply plugin: "org.jetbrains.dokka"
 
 ext {
     snippetsDir = file("$buildDir/generated-snippets")
@@ -35,6 +35,11 @@ subprojects {
     apply plugin: 'eclipse'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
+
+    apply plugin: 'org.asciidoctor.convert'
+    apply plugin: "org.jetbrains.dokka"
+
+    apply plugin: 'docker'
 
     group = 'com.exiasoft'
     version = '0.0.1-SNAPSHOT'
@@ -55,10 +60,36 @@ subprojects {
             jvmTarget = "1.8"
         }
     }
-
     jar {
         // Need this for subprojects to reference each other
         enabled=true
+    }
+    docker {
+        useApi true
+        hostUrl 'http://localhost:2375'
+    }
+    task cleanAll {
+        dependsOn ":itscommon:clean", ":itscommon-test:clean",
+                ":itsdiscovery:clean", ":itsconfig:clean", ":itsauthen-client:clean", ":itsauthen:clean",
+                ":itsstaticdata:clean", ":itsstaticdata-client:clean", ":itsaccount:clean", ":itsorder:clean",
+                ":itsmarketdata:clean", ":itsgateway:clean", ":itsmonolith:clean"
+    }
+    task buildDocker(type: Docker, dependsOn: bootJar) {
+        push = false
+        applicationName = jar.baseName
+        baseImage = 'openjdk:8-jdk-alpine'
+        volume('/tmp')
+        addFile {
+            from jar
+            rename {'app.jar'}
+        }
+        entryPoint(['java', '-Djava.security.egd=file:/dev/./urandom', '-jar', '/app.jar'])
+        // exposePort(8080)
+    }
+    task buildDockerAll {
+        dependsOn ":itsdiscovery:buildDocker", ":itsconfig:buildDocker", ":itsauthen:buildDocker",
+                ":itsstaticdata:buildDocker", ":itsaccount:buildDocker", ":itsorder:buildDocker",
+                ":itsmarketdata:buildDocker", ":itsgateway:buildDocker", ":itsmonolith:buildDocker"
     }
 
     repositories {
