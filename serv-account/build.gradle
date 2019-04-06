@@ -1,4 +1,6 @@
-dockerPort = 8400
+ext {
+	dockerPort = 8400
+}
 
 dependencies {
 	implementation("capital.scalable:spring-auto-restdocs-core:${springAutoRestDocsVersion}")
