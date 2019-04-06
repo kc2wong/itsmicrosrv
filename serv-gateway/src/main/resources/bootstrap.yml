@@ -1,7 +1,7 @@
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8082/eureka/
+      defaultZone: http://itsmicrosrv:8082/eureka/
     registryFetchIntervalSeconds: 5
     region: default
 spring:
