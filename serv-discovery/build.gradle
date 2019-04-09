@@ -1,4 +1,5 @@
 ext {
+    dockerContainerName = "itsdiscovery"
 	dockerPort = 8082
 }
 

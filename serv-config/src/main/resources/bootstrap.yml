@@ -12,7 +12,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: 'http://itsmicrosrv:8082/eureka/'
+      defaultZone: 'http://itsdiscovery:8082/eureka/'
     registryFetchIntervalSeconds: 5
     region: default
   instance:

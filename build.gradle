@@ -22,12 +22,23 @@ buildscript {
     }
 }
 
+apply plugin: 'com.bmuschko.docker-remote-api'
+apply plugin: com.bmuschko.gradle.docker.DockerRemoteApiPlugin
+
+import com.bmuschko.gradle.docker.tasks.network.*
+
+task createDockerNetwork(type: DockerCreateNetwork) {
+    networkId = 'itsmicrosrv-nw'
+}
+
 ext {
     snippetsDir = file "$buildDir/generated-snippets"
     javadocJsonDir = file "$buildDir/generated-javadoc-json"
+    dockerContainerName = null
 }
 
 import com.bmuschko.gradle.docker.tasks.image.*
+import com.bmuschko.gradle.docker.tasks.container.*
 
 subprojects {
 
@@ -69,6 +80,17 @@ subprojects {
         enabled=true
     }
 
+    docker {
+        url = 'unix:///var/run/docker.sock'
+        if (System.env.containsKey('DOCKER_HOST') && System.env.containsKey('DOCKER_CERT_PATH')) {
+            url = System.env.DOCKER_HOST.replace("tcp", "https")
+            certPath = new File(System.env.DOCKER_CERT_PATH)
+        }
+        else if (System.env.containsKey('DOCKER_HOST')) {
+            url = System.env.DOCKER_HOST
+        }
+    }
+
     task cleanAll {
         dependsOn ":itscommon:clean", ":itscommon-test:clean",
                 ":itsdiscovery:clean", ":itsconfig:clean", ":itsauthen-client:clean", ":itsauthen:clean",
@@ -91,15 +113,33 @@ subprojects {
     task buildDockerImage(type: DockerBuildImage) {
         dependsOn createDockerfile, copyJar
         tags = ["${project.group}/${jar.baseName}:${project.version}"]
-        url = 'unix:///var/run/docker.sock'
-        if (System.env.containsKey('DOCKER_HOST') && System.env.containsKey('DOCKER_CERT_PATH')) {
-            url = System.env.DOCKER_HOST.replace("tcp", "https")
-            certPath = new File(System.env.DOCKER_CERT_PATH)
-        }
-        else if (System.env.containsKey('DOCKER_HOST')) {
-            url = System.env.DOCKER_HOST
-        }
+//        url = 'unix:///var/run/docker.sock'
+//        if (System.env.containsKey('DOCKER_HOST') && System.env.containsKey('DOCKER_CERT_PATH')) {
+//            url = System.env.DOCKER_HOST.replace("tcp", "https")
+//            certPath = new File(System.env.DOCKER_CERT_PATH)
+//        }
+//        else if (System.env.containsKey('DOCKER_HOST')) {
+//            url = System.env.DOCKER_HOST
+//        }
+    }
 
+    task createDockerContainer(type: DockerCreateContainer) {
+        dependsOn buildDockerImage
+//        imageId = "${project.group}/${jar.baseName}:${project.version}".toString()
+        targetImageId = buildDockerImage.getImageId()
+        network = "itsmicrosrv-nw"
+        publishAll = true
+        doFirst {
+            if (dockerContainerName != null) {
+                println(dockerContainerName)
+                containerName = dockerContainerName
+            }
+        }
+    }
+
+    task startDockerContainer(type: DockerStartContainer) {
+        dependsOn createDockerContainer
+        targetContainerId = createDockerContainer.getContainerId()
     }
 
     repositories {
