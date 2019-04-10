@@ -1,6 +1,5 @@
 ext {
     dockerContainerName = "itsdiscovery"
-	dockerPort = 8082
 }
 
 apply plugin: 'org.springframework.boot'

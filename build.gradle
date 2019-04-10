@@ -27,14 +27,37 @@ apply plugin: com.bmuschko.gradle.docker.DockerRemoteApiPlugin
 
 import com.bmuschko.gradle.docker.tasks.network.*
 
+task cleanAll {
+    dependsOn ":itscommon:clean", ":itscommon-test:clean",
+            ":itsdiscovery:clean", ":itsconfig:clean", ":itsauthen-client:clean", ":itsauthen:clean",
+            ":itsstaticdata:clean", ":itsstaticdata-client:clean", ":itsaccount:clean", ":itsorder:clean",
+            ":itsmarketdata:clean", ":itsgateway:clean", ":itsmonolith:clean"
+}
+
+task buildDockerImageAll {
+    dependsOn ":itsdiscovery:buildDockerImage", ":itsconfig:buildDockerImage", ":itsauthen:buildDockerImage",
+            ":itsstaticdata:buildDockerImage", ":itsaccount:buildDockerImage", ":itsorder:buildDockerImage",
+            ":itsmarketdata:buildDockerImage", ":itsgateway:buildDockerImage"
+}
+
 task createDockerNetwork(type: DockerCreateNetwork) {
     networkId = 'itsmicrosrv-nw'
+}
+
+task startSystemDockerContainer {
+    dependsOn ":itsdiscovery:startDockerContainer", ":itsconfig:startDockerContainer"
+}
+
+task startApplicationDockerContainer {
+    dependsOn ":itsauthen:startDockerContainer", ":itsstaticdata:startDockerContainer", ":itsaccount:startDockerContainer",
+            ":itsorder:startDockerContainer", ":itsmarketdata:startDockerContainer", ":itsgateway:startDockerContainer"
 }
 
 ext {
     snippetsDir = file "$buildDir/generated-snippets"
     javadocJsonDir = file "$buildDir/generated-javadoc-json"
     dockerContainerName = null
+    dockerPortBinding = null
 }
 
 import com.bmuschko.gradle.docker.tasks.image.*
@@ -81,7 +104,6 @@ subprojects {
     }
 
     docker {
-        url = 'unix:///var/run/docker.sock'
         if (System.env.containsKey('DOCKER_HOST') && System.env.containsKey('DOCKER_CERT_PATH')) {
             url = System.env.DOCKER_HOST.replace("tcp", "https")
             certPath = new File(System.env.DOCKER_CERT_PATH)
@@ -89,13 +111,6 @@ subprojects {
         else if (System.env.containsKey('DOCKER_HOST')) {
             url = System.env.DOCKER_HOST
         }
-    }
-
-    task cleanAll {
-        dependsOn ":itscommon:clean", ":itscommon-test:clean",
-                ":itsdiscovery:clean", ":itsconfig:clean", ":itsauthen-client:clean", ":itsauthen:clean",
-                ":itsstaticdata:clean", ":itsstaticdata-client:clean", ":itsaccount:clean", ":itsorder:clean",
-                ":itsmarketdata:clean", ":itsgateway:clean", ":itsmonolith:clean"
     }
 
     task copyJar(type: Copy, dependsOn: bootJar) {
@@ -113,33 +128,28 @@ subprojects {
     task buildDockerImage(type: DockerBuildImage) {
         dependsOn createDockerfile, copyJar
         tags = ["${project.group}/${jar.baseName}:${project.version}"]
-//        url = 'unix:///var/run/docker.sock'
-//        if (System.env.containsKey('DOCKER_HOST') && System.env.containsKey('DOCKER_CERT_PATH')) {
-//            url = System.env.DOCKER_HOST.replace("tcp", "https")
-//            certPath = new File(System.env.DOCKER_CERT_PATH)
-//        }
-//        else if (System.env.containsKey('DOCKER_HOST')) {
-//            url = System.env.DOCKER_HOST
-//        }
     }
 
     task createDockerContainer(type: DockerCreateContainer) {
         dependsOn buildDockerImage
-//        imageId = "${project.group}/${jar.baseName}:${project.version}".toString()
-        targetImageId = buildDockerImage.getImageId()
+        imageId = buildDockerImage.getImageId()
         network = "itsmicrosrv-nw"
-        publishAll = true
+        autoRemove = true
         doFirst {
             if (dockerContainerName != null) {
-                println(dockerContainerName)
                 containerName = dockerContainerName
+            }
+            if (dockerPortBinding != null) {
+                println dockerPortBinding
+                portBindings = ["${dockerPortBinding}"]
+                exposePorts('tcp', [dockerPortBinding.toString().split(":").last().toInteger()])
             }
         }
     }
 
     task startDockerContainer(type: DockerStartContainer) {
         dependsOn createDockerContainer
-        targetContainerId = createDockerContainer.getContainerId()
+        containerId = createDockerContainer.getContainerId()
     }
 
     repositories {
