@@ -66,6 +66,12 @@ _Optional_ -- Collects trace messages from all the microservices
 
 * JDK 8 / 10
 
+Edit host file and add the entry
+```
+# IP address of the Eureka discovery server, all services will register itself to http://itsdiscovery:8082/eureka
+127.0.0.1     itsdiscovery
+```
+ 
 After download the source codes, execute the following commands to start all required microservices (Assumes in Windows environment, open a command prompt for each command)
 ```
 $ cd itsmicrosrv
@@ -183,6 +189,8 @@ Refer to [itswebui](https://github.com/kc2wong/itswebui)
   - External and internal APIs are defined in separate controllers
   - Backing service should be defined as interfaces, with @Service implementation class
 
+---
+
 ### Message Logging
   - Spring cloud sleuth is used to generate correlation id and sent to zippkin server
   - Follow the steps below to enable message tracing with zippkin 
@@ -210,6 +218,8 @@ $ gradlew bootRun
 ```
   - Then add the appender to appender "GELF" to required loggers
 
+---
+
 ### API Documentation
 
 Spring Rest Docs and Spring Rest AutoDocs are used to generate API documentation.  Spring Rest Docs is a test driven documentation framework and therefore it is expected to have a separated set of test cases and mock results for generation of API documentation
@@ -225,9 +235,58 @@ Spring Rest Docs is handy for API documentation generation.  However, for enterp
 
 Yet to find out how to generate multiple formats of API documentation
 
+---
+
+### Docker Containerization
+
+Gradle docker plugin [bmuschko](https://github.com/bmuschko/gradle-docker-plugin) is used to build docker image and start the container, the following key tasks created :
+* createDockerNetwork - Create a custom bridge network with name "itsmicrosrv-nw".  A custom network must be created for the microservices to communicate with each other, also to expose the port of itsgateway only 
+* :subProject:buildDockerImage - Build a docker image for a service, i.e. itsdiscovery:buildDockerImage
+* buildDockerImageAll - Build docker images for all services
+* :subProject:startDockerContainer - Start a container with random name and no exposed port (Only itsdiscovery needs to have name specified as other microservice need to register itself to eureka by container name).  To specify a container name, add an ext property dockerContainerName in subproject build.gradle.  To specify port binding, add an ext property dockerPortBinding
+* startSystemDockerContainer - Start container for itsdicovery and itsconfig
+* startApplicationDockerContainer - Start container for itsauthen, itsstaticdata, itsaccount, itsorder, itsmarketdata and itsgateway
+
+
+#### Prerequisites
+
+* Docker Installed in local or remote machine, with remote API enabled
+* If docker is installed in remote machine, set the environment value DOCKER_HOST, e.g. set DOCKER_HOST=tcp://192.168.11.104:2375
+
+Execute the following commands to start all required microservices (Assumes in Windows environment, open a command prompt for each command)
+```
+$ cd itsmicrosrv
+$ gradlew itsdiscovery:startDockerContainer
+$ gradlew itsconfig:startDockerContainer
+
+## Wait until the above two service are started (by checking docker logs)
+
+$ gradlew itsauten:startDockerContainer
+$ gradlew itsstaticdata:startDockerContainer
+$ gradlew itsaccount:startDockerContainer
+$ gradlew itsorder:startDockerContainer
+$ gradlew itsmarketdata:startDockerContainer
+$ gradlew itsgateway:startDockerContainer
+
+## Wait until the above services are started (by checking docker logs)
+```
+
+OR
+
+```
+$ cd itsmicrosrv
+$ gradlew startSystemDockerContainer
+
+## Wait until the above two service are started (by checking docker logs)
+
+$ gradlew startApplicationDockerContainer
+
+## Wait until the above services are started (by checking docker logs)
+```
+
 ### Next Steps
 
-* Deployment with Docker and Kubernetes
+* Docker orchestration with Kubernetes
 * Deployment to AWS
 * Error reporting and handling in microservices
 * Retrieve data from database with r2dbc

@@ -1,3 +1,7 @@
+ext {
+    dockerContainerName = "itsdiscovery"
+}
+
 apply plugin: 'org.springframework.boot'
 
 dependencies {

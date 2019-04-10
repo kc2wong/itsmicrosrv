@@ -1,3 +1,7 @@
+ext {
+	dockerPort = 8400
+}
+
 dependencies {
 	implementation("capital.scalable:spring-auto-restdocs-core:${springAutoRestDocsVersion}")
     implementation("org.springframework.boot:spring-boot-starter-security")

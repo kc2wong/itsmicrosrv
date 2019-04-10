@@ -4,10 +4,16 @@ server:
 spring:
   application:
     name: eurekaserver
+  clound:
+    inetutils:
+      preferredNetworks:
+        - 10.0
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8082/eureka/
+      defaultZone: 'http://itsdiscovery:8082/eureka/'
     fetch-registry: false
     register-with-eureka: false
+  instance:
+    preferIpAddress: true

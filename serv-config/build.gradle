@@ -1,3 +1,7 @@
+ext {
+    dockerPort = 8000
+}
+
 dependencies {
     implementation('org.springframework.cloud:spring-cloud-config-server')
     implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
