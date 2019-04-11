@@ -254,6 +254,16 @@ Gradle docker plugin [bmuschko](https://github.com/bmuschko/gradle-docker-plugin
 * If docker is installed in remote machine, set the environment value DOCKER_HOST, e.g. set DOCKER_HOST=tcp://192.168.11.104:2375
 
 Execute the following commands to start all required microservices (Assumes in Windows environment, open a command prompt for each command)
+
+One off setup
+```
+$ cd itsmicrosrv
+
+## Create custom bridge network
+$ gradlew createDockerNetwork  
+```
+
+Start Containers
 ```
 $ cd itsmicrosrv
 $ gradlew itsdiscovery:startDockerContainer
@@ -283,6 +293,8 @@ $ gradlew startApplicationDockerContainer
 
 ## Wait until the above services are started (by checking docker logs)
 ```
+
+---
 
 ### Next Steps
 
